@@ -1,0 +1,14 @@
+/* Keep existing icon wrappers, circles and hover motion; only the glyph changes. */
+svg.ri-arrow-icon-v109 {
+  display:inline-block;
+  width:1em!important;
+  height:1em!important;
+  flex:none;
+  vertical-align:-.14em;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
+}
