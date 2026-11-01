@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+<!-- V44: original V42 contour, with a static frayed feather at its boundary. The filled interior stays even; no cloud texture or animation. -->
+<defs>
+ <filter id="edge-body" x="-18%" y="-24%" width="136%" height="148%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency=".011 .022" numOctaves="2" seed="31" result="edge-noise"/>
+  <feDisplacementMap in="SourceGraphic" in2="edge-noise" scale="88" xChannelSelector="R" yChannelSelector="G"/>
+  <feGaussianBlur stdDeviation="10"/>
+ </filter>
+ <filter id="edge-fringe" x="-22%" y="-28%" width="144%" height="156%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency=".006 .036" numOctaves="2" seed="40" result="fringe-noise"/>
+  <feDisplacementMap in="SourceGraphic" in2="fringe-noise" scale="146" xChannelSelector="R" yChannelSelector="G"/>
+  <feGaussianBlur stdDeviation="20"/>
+ </filter>
+</defs>
+<path d="M-160 300 C-12 286 84 156 235 220 C386 284 397 392 563 350 C704 314 769 194 916 239 C1090 292 1110 428 1284 364 C1428 310 1473 188 1600 218 V1060 H-160 Z" fill="white" opacity=".28" filter="url(#edge-fringe)"/>
+<path d="M-160 300 C-12 286 84 156 235 220 C386 284 397 392 563 350 C704 314 769 194 916 239 C1090 292 1110 428 1284 364 C1428 310 1473 188 1600 218 V1060 H-160 Z" fill="white" filter="url(#edge-body)"/>
+</svg>

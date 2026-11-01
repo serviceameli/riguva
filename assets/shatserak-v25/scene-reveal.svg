@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 640" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="v25-reveal-base" x2="0" y2="1">
+      <stop offset="0" stop-color="white" stop-opacity="0"/>
+      <stop offset=".16" stop-color="white" stop-opacity=".035"/>
+      <stop offset=".4" stop-color="white" stop-opacity=".13"/>
+      <stop offset=".65" stop-color="white" stop-opacity=".44"/>
+      <stop offset=".85" stop-color="white" stop-opacity=".85"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <linearGradient id="v25-reveal-layer" x2="0" y2="1">
+      <stop offset="0" stop-color="white" stop-opacity="0"/>
+      <stop offset=".4" stop-color="white" stop-opacity=".28"/>
+      <stop offset="1" stop-color="white"/>
+    </linearGradient>
+    <filter id="v25-reveal-soft" x="-10%" y="-25%" width="120%" height="150%"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="v25-reveal-near" x="-10%" y="-25%" width="120%" height="150%"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+  <rect width="1440" height="640" fill="url(#v25-reveal-base)"/>
+  <path fill="url(#v25-reveal-layer)" opacity=".82" filter="url(#v25-reveal-soft)" d="M-80 235 C110 190 215 335 390 300 C565 268 645 168 820 215 C1005 265 1072 355 1240 286 C1342 244 1450 186 1530 224 V720 H-80 Z"/>
+  <path fill="url(#v25-reveal-layer)" opacity=".76" filter="url(#v25-reveal-near)" d="M-80 470 C100 460 168 362 324 382 C500 408 558 518 728 483 C903 448 955 356 1107 393 C1263 431 1393 529 1530 478 V720 H-80 Z"/>
+</svg>

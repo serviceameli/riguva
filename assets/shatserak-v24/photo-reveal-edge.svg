@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500" preserveAspectRatio="none">
+ <defs><filter id="rim" x="-6%" y="-15%" width="112%" height="130%"><feGaussianBlur stdDeviation="18"/></filter></defs>
+ <path fill="white" filter="url(#rim)" d="M-40 310 C98 343 199 319 240 259 C280 203 263 124 196 78 C288 89 340 140 363 208 C395 300 456 345 547 330 C643 313 671 240 711 193 C754 142 792 132 859 114 C796 160 800 231 848 281 C911 347 1001 352 1076 311 C1132 281 1132 224 1195 189 C1242 162 1280 165 1322 134 C1290 192 1313 249 1360 279 C1401 306 1448 290 1480 269 L1480 570 L-40 570 Z"/>
+</svg>

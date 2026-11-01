@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="scene-penumbra-left" gradientUnits="userSpaceOnUse" x1="-190" y1="375" x2="440" y2="440">
+      <stop offset="0" stop-color="#000" stop-opacity="0.85"/>
+      <stop offset="0.3" stop-color="#000" stop-opacity="0.6"/>
+      <stop offset="0.66" stop-color="#000" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="scene-penumbra-right" gradientUnits="userSpaceOnUse" x1="1640" y1="700" x2="1030" y2="530">
+      <stop offset="0" stop-color="#000" stop-opacity="0.82"/>
+      <stop offset="0.36" stop-color="#000" stop-opacity="0.53"/>
+      <stop offset="0.72" stop-color="#000" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="scene-penumbra-near" x="-55%" y="-20%" width="210%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <filter id="scene-penumbra-far" x="-55%" y="-40%" width="210%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="48"/>
+    </filter>
+  </defs>
+  <g opacity="0.45">
+    <path fill="url(#scene-penumbra-left)" filter="url(#scene-penumbra-near)" d="M-260-190 C-18-160 92-65 111 106 C135 282 249 329 218 505 C193 660 311 790 370 1000 L-280 1040 Z"/>
+    <path fill="url(#scene-penumbra-right)" filter="url(#scene-penumbra-far)" d="M1640 185 C1514 258 1507 389 1397 455 C1285 519 1345 651 1229 748 C1152 812 1183 918 1148 1015 L1710 1040 Z"/>
+  </g>
+</svg>

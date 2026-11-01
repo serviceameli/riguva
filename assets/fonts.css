@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font-5.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font-6.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Golos Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(font-7.ttf) format('truetype');
+}
+@font-face {font-family:'Cover Condensed';font-style:normal;font-weight:400;font-display:swap;src:url('cover-condensed.ttf') format('truetype');}
+@font-face {font-family:'Cover Handwritten';font-style:normal;font-weight:400;font-display:swap;src:url('cover-handwritten.woff2') format('woff2');}

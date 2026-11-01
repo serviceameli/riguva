@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="connect-src 'none'; form-action 'none'; base-uri 'self'; object-src 'none'">
+<meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Два мира Ри Гува. Войди в историю «Черного Белого» или открой Шацерак.">
+  <title>Ри Гува · По ту сторону истории</title>
+  <link rel="icon" href="assets/sigil.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site-styles-v107-1.css?v=107">
+  <script src="static-preview.js"></script>
+  <script src="resource-loading-v101.js?v=101" defer></script>
+  <script src="parking-v35.js?v=1" defer></script>
+  <script src="merch-mockups.js?v=79" defer></script>
+  <script src="commerce-v97.js?v=97.1" defer></script>
+  <script src="merch-drops-v89.js?v=97.1" defer></script>
+  <script src="buy-options-v20.js?v=103" defer></script>
+  <script src="merch-preview-v91.js?v=107" defer></script>
+  <script src="app.js?v=98" defer></script>
+  <script src="drop-requests-v20.js?v=97.1" defer></script>
+  <script src="scene.js?v=96" defer></script>
+  <script src="experience.js?v=85" defer></script>
+  <script src="bonus-materials.js?v=96" defer></script>
+  <script src="bonus-chapters-v21-data.js" defer></script>
+  <script src="bonus-reader-v21.js" defer></script>
+  <script src="world-atmosphere.js" defer></script>
+  <script src="parking-v17.js?v=33" defer></script>
+  <script src="questions-data-v16.js?v=45" defer></script>
+<script src="qa-v16.js?v=60" defer></script>
+  <script src="legal-v18.js?v=82" defer></script>
+  <script src="font-punctuation.js" defer></script>
+  <script src="shatserak-shadows-v25.js?v=1" defer></script>
+  <script src="lake-dream-v42.js?v=4" defer></script>
+<style id="author-entry-style-v50">
+body.cinema.two-worlds .header .author-entry{display:inline-flex;align-items:center;min-height:44px;gap:10px;font:400 15px/1.5 var(--ui-font);white-space:nowrap;color:inherit}
+body.cinema.two-worlds .header .author-entry:hover{text-decoration:underline;text-underline-offset:6px}
+body.cinema.two-worlds:not(.world-selected) .header #world-switch-open{display:none!important}
+body.cinema.two-worlds .author-footer-bottom-row{flex-wrap:wrap;gap:16px 24px}
+body.cinema.two-worlds .author-footer-about{display:inline-flex;align-items:center;gap:16px;min-height:44px;font:400 16px/1.5 var(--ui-font);border-bottom:1px solid #ffffff50}
+body.cinema.two-worlds .author-footer-about:hover{border-color:#eee}
+@media(max-width:1380px){body.cinema.two-worlds.world-selected .header .author-entry{display:none}}
+</style>
+<style id="qa-knob-motion-v51">
+/* V51: one mechanical turn; the marker stays in the knob's local coordinates. */
+body.cinema.two-worlds[data-world='bw'] #author-qa #qa-radio .qa-jeep-stage .qa-knob{
+ position:absolute;display:block;left:14.1%;top:41.8%;
+ width:13.5%;height:auto;aspect-ratio:1;min-width:0;min-height:0;
+ max-width:none;max-height:none;box-sizing:border-box;padding:0;margin:0;
+ border:0;border-radius:50%;background:none;box-shadow:none;overflow:hidden;
+ pointer-events:none;transform-origin:50% 50%;
+ transform:translate(-50%,-50%) rotate(-40deg);
+ animation:none!important;
+ transition:transform .38s cubic-bezier(.22,.61,.36,1);
+}
+body.cinema.two-worlds[data-world='bw'] #author-qa #qa-radio[data-open='true'] .qa-jeep-stage .qa-knob{
+ transform:translate(-50%,-50%) rotate(-12deg);
+}
+body.cinema.two-worlds[data-world='bw'] #author-qa #qa-radio .qa-knob::before,
+body.cinema.two-worlds[data-world='bw'] #author-qa #qa-radio .qa-knob::after{content:none}
+body.cinema.two-worlds[data-world='bw'] #author-qa #qa-radio .qa-knob>span{
+ position:absolute;display:block;left:50%;top:14%;right:auto;bottom:auto;
+ width:2px;height:12%;min-width:0;min-height:0;max-width:none;max-height:none;
+ margin:0;padding:0;border:0;border-radius:1px;background:#c5c5b9;
+ box-shadow:1px 0 1px #0009;opacity:.86;pointer-events:none;
+ transform:translateX(-50%);transform-origin:50% 50%;
+ animation:none!important;transition:none!important;
+}
+body.cinema.two-worlds.still #author-qa #qa-radio .qa-knob{transition:none!important}
+@media(prefers-reduced-motion:reduce){
+ body.cinema.two-worlds[data-world='bw'] #author-qa #qa-radio .qa-knob{transition:none!important}
+}
+</style>
+<style id="gate-layout-v55">
+  /* Keep the main heading in place while removing the introductory label. */
+  body.cinema.two-worlds #home .gate-heading > .eyebrow {
+    visibility: hidden;
+  }
+</style>
+<style id="effects-control-v54">
+  #effects-toggle { display: none !important; }
+</style>
+<link rel="stylesheet" href="site-styles-v107-2.css?v=107">
+<!-- v99:style:end -->
+</head>
+<body class="cinema two-worlds">
+  <div class="world-shadow-field-v19" aria-hidden="true"><span></span></div>
+
+  <a class="skip" href="#home">К выбору мира</a>
+  <header class="header">
+    <a class="wordmark" href="#home" aria-label="Ри Гува, на главную">РИ ГУВА</a>
+    <nav class="desktop-nav" aria-label="Навигация по миру" hidden><a href="#world-view">Мир</a><a href="#books">Книги</a><a href="#merch" data-world-merch>Артефакты</a><a href="#bonus">Бонусные материалы</a><a class="author-nav-v77" href="about/index.html">Об авторе</a></nav>
+    <div class="header-actions"><a class="author-entry" href="about/index.html">Об авторе</a><button class="world-switch-button" id="world-switch-open" aria-label="Сменить мир" aria-haspopup="dialog" aria-controls="world-switch-dialog"><span class="world-switch-destination-v77"><span id="world-switch-name">Два мира</span><svg class="world-switch-arrows-v77" viewBox="0 0 24 18" aria-hidden="true"><path d="M2 5h19m-4-4 4 4-4 4M22 13H3m4-4-4 4 4 4"/></svg></span></button>
+      <button class="icon-button" id="search-open" hidden aria-label="Найти книгу или артефакт"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+      <button class="bag-button" id="cart-open" hidden aria-label="Корзина" aria-haspopup="dialog" aria-controls="cart-dialog">Корзина <span class="cart-count-v97" data-cart-count aria-hidden="true">0</span></button>
+      <button class="icon-button mobile-menu" id="menu-open" hidden aria-label="Открыть меню"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 16h18"/></svg></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="world-gate" id="home" aria-labelledby="gate-title">
+      <div class="gate-heading"><p class="eyebrow">ВСЕЛЕННЫЕ РИ ГУВА</p><h1 id="gate-title">Выбери <em>свой мир</em></h1></div>
+      <div class="world-portals">
+        <a class="world-portal portal-city" href="#world-black-white" data-enter-world="bw" aria-label="Войти в мир Черный Белый"><div class="portal-scene" aria-hidden="true"><canvas class="portal-canvas" data-preview-world="black-white"></canvas><div class="portal-shade"></div></div><div class="portal-copy"><div class="portal-index"><span>01</span><i></i><span>ПОСТАПОКАЛИПСИС</span></div><p class="portal-kicker">ЗА СТЕНАМИ СФЕРЫ</p><h2 class="has-series-lettering"><span class="series-name-accessible">Черный Белый</span><img class="bw-series-wordmark" src="assets/scenes/bw-title-v6.webp" alt="" aria-hidden="true"></h2><p class="portal-description">За&nbsp;стеной Сферы меня ждёт всё, чего я&nbsp;боялась с&nbsp;детства. Но&nbsp;остаться&nbsp;страшнее</p><div class="portal-bottom"><span class="portal-enter"><i aria-hidden="true">↗</i> ВОЙТИ В МИР</span><span class="portal-count">4 КНИГИ</span></div></div></a>
+        <a class="world-portal portal-fantasy" href="#world-shatserak" data-enter-world="shatserak" aria-label="Войти в мир Шацерак"><div class="portal-scene" aria-hidden="true"><canvas class="portal-canvas" data-preview-world="shata"></canvas><div class="portal-shade"></div></div><div class="portal-copy"><div class="portal-index"><span>02</span><i></i><span>ТЁМНОЕ ФЭНТЕЗИ</span></div><p class="portal-kicker">БОГИ. ДРЕВНИЕ ТАЙНЫ. ТЕНИ.</p><h2>Шацерак</h2><p class="portal-description">В&nbsp;моём мире детей пугают богом, чьи слуги сотканы из&nbsp;тени</p><div class="portal-bottom"><span class="portal-enter"><i aria-hidden="true">↗</i> ВОЙТИ В МИР</span><span class="portal-count">2 КНИГИ</span></div></div></a>
+      </div><span class="gate-caption">ДВА МИРА / ОДИН АВТОР</span>
+    </section>
+    <div class="cinema-experience" id="experience" hidden>
+      <div class="cinema-stage" aria-hidden="true"><canvas id="world-canvas"></canvas><div class="cinema-shade"></div><div class="cinema-grain"></div></div>
+      <section class="hero scene-panel world-hero" id="world-view" aria-labelledby="hero-title"><div class="hero-topline"><span id="world-genre">МИР 01 / ПОСТАПОКАЛИПСИС</span><span>АВТОРСКИЕ МИРЫ / 18+</span></div><div class="hero-copy"><p class="eyebrow" id="world-eyebrow">ЗА СТЕНАМИ СФЕРЫ</p><h1 id="hero-title">Черный<br><em>Белый</em></h1><div class="hero-invitation"><p id="world-description"></p><a class="enter-story" href="#story"><span class="enter-symbol" aria-hidden="true">↘</span><span>ПОЗНАКОМИТЬСЯ С МИРОМ</span></a></div></div><div class="world-hero-footer"><button class="back-to-worlds" data-worlds-home>← ДВА МИРА</button><a href="#story">Дальше ↓</a></div></section>
+      <section class="scene-panel narrative-panel" id="story" aria-labelledby="story-title"><div class="poem-vision" data-atmo-world="shatserak" aria-hidden="true"><img data-ri-portrait="assets/shatserak-v23/hood-portrait-cutout.png" alt="" width="1024" height="1536"></div><div class="poem-shadow" data-atmo-world="shatserak" aria-hidden="true"></div><div class="poem-shadow poem-shadow--second" data-atmo-world="shatserak" aria-hidden="true"></div><div class="chapter-number"><span>ПО ТУ СТОРОНУ</span><b id="story-number">01</b><i></i><span id="story-label">ЧЕРНЫЙ БЕЛЫЙ</span></div><div class="chapter-copy"><p class="eyebrow" id="story-eyebrow"></p><h2 id="story-title"></h2><p class="chapter-description" id="story-description"></p><a class="chapter-link" id="story-next" href="#field-notes">Дальше <span>↓</span></a></div></section>
+      <section class="memory-chapter" data-atmo-world="shatserak" id="night-lake" aria-labelledby="memory-title">
+        <img class="memory-landscape" src="assets/performance-v101/shatserak-v42/lake-reunion-final-v42.webp" alt="У серебристого ночного озера и огромной секвойи стоит девушка с тёмной косой и свободно опущенными руками. Коротко стриженный принц в кафтане подходит сзади и нежно касается её локтя." width="1672" height="941" loading="lazy">
+        <div class="memory-shade" aria-hidden="true"></div><div class="creeping-shadow shadow-two" aria-hidden="true"></div>
+        <div class="memory-copy"><h2 id="memory-title">Ты ведь…<br><em>еще моя<br>русалка?</em></h2></div>
+        <div class="memory-bottom"><a href="#bonus">Бонусные материалы ↓</a></div>
+      </section>
+      <section class="catalog section-pad" id="books" hidden aria-labelledby="catalog-title"><div class="catalog-atmosphere" aria-hidden="true"><div class="cast-shadow-v19 cast-shadow-v19--catalog" data-atmo-world="shatserak"></div><span class="catalog-scratch" data-atmo-world="bw">×</span></div>
+      <div class="section-heading"><h2 id="catalog-title">Книги</h2><blockquote class="books-quote-bw" data-atmo-world="bw"><p id="field-notes-title"><span>Нет места</span> <span>безопаснее,</span><br><em><span>чем рядом</span> <span>со мной.</span></em></p></blockquote></div>
+      <div class="product-grid" id="book-grid"></div><div class="journey-next" data-atmo-world="shatserak"><a href="#night-lake">Дальше <span>↓</span></a></div><div class="journey-next" data-atmo-world="bw"><a href="#field-notes">Дальше <span>↓</span></a></div>
+    </section>
+      <section class="merch section-pad" id="merch" hidden aria-labelledby="merch-title">
+      <div class="section-heading"><h2 id="merch-title">Артефакты</h2><blockquote class="merch-quote-v91"><p>Осторожно, принцесса!<br> <em>Звучит как приглашение.</em></p></blockquote></div>
+      <div class="bw-shot-v80" aria-hidden="true" data-shot="waiting"><span class="bw-prop bw-five-seven" aria-hidden="true"><img src="assets/performance-v101/bw-v15/five-seven.webp" alt="" width="1536" height="1024" loading="lazy"><i class="bw-shot-muzzle-v80"></i></span><span class="bw-shot-projectile-v80"><svg class="bw-shot-bullet-v80" viewBox="0 0 28 12" fill="none"><path d="M1 6Q7 1.5 14 2L25 2.8 27 4V8L25 9.4 14 10Q7 9.8 1 6Z" fill="#7d7b74" stroke="#292925" stroke-width=".9"/><path d="M5 5.4 14 3.9 23 4.6M11 8 23 7.6M24 3.5V8.5" stroke="#deddd5" stroke-width=".7"/><path d="M7 7.1 13 7.8 20 7.3" stroke="#42423d" stroke-width=".6"/></svg><svg class="bw-shot-trace-v80" viewBox="0 0 145 14" fill="none"><g stroke="#54544c" stroke-linecap="round"><path d="M0 6 18 5.7 27 6.6 44 5.9M49 6.5 67 5.9 81 6.3M87 6 107 6.9 122 6.2 141 6.6" stroke-width=".85" opacity=".53"/><path d="M9 3 19 3.8 31 3.1M38 3.8 62 3.3M73 3.6 95 4.1 116 3.5M21 9.5 41 9.9 53 9.3M62 10 80 9.5 103 10.1 129 9.4" stroke-width=".6" opacity=".32"/></g></svg></span><svg class="bw-shot-flash-v80" viewBox="0 0 70 42" fill="none"><path d="M61 21 40 17 44 9 28 16 9 12 22 23 4 30 32 26 40 35 43 26Z" fill="#e9e7db" stroke="#69685e" stroke-width="1"/><path d="m55 21-25-1-9-5m30 9-21 1-13 4M38 13 33 19M36 31 33 26" stroke="#74736a" stroke-width=".65"/><path d="m24 8-9-4M13 20l-10-2m13 16-9 5" stroke="#64645c" stroke-width=".7"/></svg></div>
+      <div class="merch-grid" id="merch-grid"></div>
+<!-- v89:drops:start -->
+<section class="merch-drops-v89" aria-labelledby="merch-drops-title-v89"><div class="merch-drops-copy-v89"><p class="merch-drops-kicker-v89">Следующие выпуски</p><h3 id="merch-drops-title-v89">Не пропустить новый дроп</h3><p>Анонсы новых дропов, состав и цены будут в <a href="https://t.me/riguva" target="_blank" rel="noopener noreferrer">Telegram Ри <span aria-hidden="true">↗</span></a>.</p></div><div class="merch-drops-side-v92"><figure class="merch-pineapple-v92" aria-hidden="true"><span class="bw-prop bw-pineapple-pieces"><img src="assets/performance-v101/bw-v15/pineapple-pieces.webp" alt="" loading="lazy" decoding="async"></span></figure></div></section>
+<!-- v89:drops:end -->
+    <div class="journey-next"><a href="#bonus">Бонусные материалы <span>↓</span></a></div></section>
+      <section class="bonus-materials section-pad" id="bonus" hidden aria-labelledby="bonus-title">
+      <div class="bonus-shadow-field" data-atmo-world="shatserak" aria-hidden="true"><span class="cast-shadow-v19 cast-shadow-v19--archive"></span></div><figure class="archive-vision-v19 harstok-vision-v22" data-atmo-world="shatserak" aria-hidden="true"><img src="assets/performance-v101/shatserak-v22/harstok-library.webp" alt="" width="1536" height="1024" loading="lazy"></figure><div class="section-heading"><h2 id="bonus-title">Бонусные материалы</h2></div>
+      <div class="bonus-panel" id="bonus-panel-bw" role="group" aria-label="Бонусные главы «Черного Белого»" hidden>
+                <div class="bw-parking-v17" id="bw-bonus-lamp" data-lit="false">
+          <div class="bw-bonus-wall" aria-hidden="true"></div>
+          <div class="p35-parking-horde" aria-hidden="true">
+            <svg class="p35-horde-defs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" focusable="false"><defs><image id="p35-horde-atlas" data-ri-image="assets/performance-v101/bw-v35/zombies-approach.webp" width="1536" height="1024"/></defs></svg>
+            <svg class="p35-horde-wide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2460 1024" preserveAspectRatio="xMidYMax meet" focusable="false">
+              <svg x="0" width="768" height="1024" viewBox="0 0 768 1024" overflow="hidden"><use xlink:href="#p35-horde-atlas"/></svg>
+              <svg x="1692" width="768" height="1024" viewBox="768 0 768 1024" overflow="hidden"><use xlink:href="#p35-horde-atlas"/></svg>
+            </svg>
+            <svg class="p35-horde-near" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1536 1024" preserveAspectRatio="xMidYMin meet" focusable="false"><use xlink:href="#p35-horde-atlas"/></svg>
+          </div>
+          <div class="bw-parking-light" aria-hidden="true"></div>
+          <div class="bw-lamp-illustration">
+            <img class="bw-worklamp-art" data-ri-deferred="assets/performance-v101/bw-v17/worklamp-switch.webp" data-ri-world="bw" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
+            <svg class="p33-switch-art" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 768 1024" aria-hidden="true" focusable="false">
+              <defs><image id="p33-switch-atlas" data-ri-image="assets/performance-v101/bw-v33/switch-states.webp" width="1536" height="1024"/></defs>
+              <use class="p33-switch-off" xlink:href="#p33-switch-atlas"/>
+              <use class="p33-switch-on" xlink:href="#p33-switch-atlas" x="-768"/>
+            </svg>
+            <span class="bw-bulb-glow" aria-hidden="true"></span>
+            <button id="bw-light-switch" class="bw-light-switch" type="button" aria-label="Включить строительный фонарь и открыть бонусные главы" aria-expanded="false" aria-pressed="false" aria-controls="bw-bonus-chapters" aria-describedby="bw-chapter-spoiler"><span class="bw-switch-caption" aria-hidden="true"><span id="bw-switch-copy">Включи свет</span><svg class="bw-switch-arrow" viewBox="0 0 64 42" focusable="false"><path d="M3 29 C18 28 28 11 56 14 M45 4 L59 14 L47 25 M5 32 C21 30 33 14 54 16"/></svg></span></button>
+          </div>
+          <div class="bw-bonus-chapters" id="bw-bonus-chapters" hidden inert>
+        <div class="bonus-chapter-list compact-chapters-v21">
+          <article class="bonus-chapter"><span class="bonus-order">01</span><div class="bonus-chapter-copy"><h4 data-chapter-title="chapter-1">Бонусная глава</h4></div><div class="bonus-actions"><button class="bonus-text-link" type="button" data-chapter-open="chapter-1" aria-haspopup="dialog" aria-controls="chapter-dialog">Читать <span aria-hidden="true">↗</span></button><a class="bonus-print-link" href="assets/bonus/chapter-1-print.pdf" download="Бонусная глава · для печати.pdf">PDF для печати <span aria-hidden="true">↓</span></a></div></article>
+          <article class="bonus-chapter"><span class="bonus-order">02</span><div class="bonus-chapter-copy"><h4 data-chapter-title="chapter-2">Бонусная глава 2</h4></div><div class="bonus-actions"><button class="bonus-text-link" type="button" data-chapter-open="chapter-2" aria-haspopup="dialog" aria-controls="chapter-dialog">Читать <span aria-hidden="true">↗</span></button><a class="bonus-print-link" href="assets/bonus/chapter-2-print.pdf" download="Бонусная глава 2 · для печати.pdf">PDF для печати <span aria-hidden="true">↓</span></a></div></article>
+        </div>
+            <p class="bonus-spoiler bonus-chapter-warning" id="bw-chapter-spoiler" role="note"><span class="bw-spoiler-symbol" aria-hidden="true">!</span><strong>Бонусные главы содержат спойлеры.</strong></p>
+          </div>
+        </div>
+<div class="qa-bonus-entry"><a href="#author-qa">Ри отвечает <span>↗</span></a></div></div>
+      <div class="bonus-panel" id="bonus-panel-shatserak" role="group" aria-label="Библиотека героев Шацерака" hidden>
+        
+        <article class="bonus-library-card bonus-library-card--unified"><div class="bonus-library-copy"><p class="archive-intro-v67">Персонажи, места и понятия Шацерака.</p><p class="bonus-spoiler archive-spoiler-v67" role="note"><strong>Читать после «Шерки»</strong> <span>Есть спойлеры к обеим книгам.</span></p><button class="bonus-button" data-bonus-open="library"><img class="archive-key-art-v67" src="assets/shatserak-v96/archive-book-idle.webp" width="96" height="96" alt="" aria-hidden="true"><span class="archive-action-label-v67">Открыть библиотеку</span></button></div></article>
+      </div>
+    <div class="journey-next" data-atmo-world="bw"><a href="#merch">Дальше <span>↓</span></a></div>    <div class="journey-next" data-atmo-world="shatserak"><a href="#contacts">История продолжается <span>↓</span></a></div></section>
+<section id="bw-finale" data-atmo-world="bw" hidden aria-label="Книги"><div id="book-grid-rest" hidden></div></section>
+      <section class="author-qa section-pad" id="author-qa" data-atmo-world="bw" hidden aria-labelledby="author-qa-title">
+        <div class="section-heading"><h2 id="author-qa-title">Ри отвечает</h2><p class="qa-intro">Архив ответов из авторского канала.</p></div>
+        <div class="qa-radio" id="qa-radio" data-open="false">
+          <div class="qa-radio-face">
+            <div class="qa-reveal qa-player-v60">
+              <span class="qa-jeep-stage" role="group" aria-label="Управление вопросами">
+                <img class="qa-jeep-art" data-ri-deferred="assets/performance-v101/bw-v31/jeep-radio.webp" data-ri-world="bw" alt="" width="1536" height="1024" loading="lazy">
+                <span class="qa-jeep-display" aria-hidden="true"><span class="qa-jeep-track">Feeling Good</span><span class="qa-jeep-meter"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span>
+                <span class="qa-knob" aria-hidden="true"><span></span></span>
+                <button class="qa-transport-key qa-play-v60" id="qa-reveal" type="button" aria-label="Play: открыть вопросы" title="Play · Открыть вопросы" aria-expanded="false" aria-controls="qa-catalog" aria-describedby="qa-spoiler-warning"><span class="qa-key-face" aria-hidden="true"><svg class="qa-key-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="qa-key-incision" fill-rule="evenodd" d="M7 4 20 12 7 20ZM10 9h2.2v.55H10Zm1.2 5h2.8v.5h-2.8Z"/><path class="qa-key-ink" fill-rule="evenodd" d="M7 4 20 12 7 20ZM10 9h2.2v.55H10Zm1.2 5h2.8v.5h-2.8Z"/></svg></span></button>
+                <button class="qa-transport-key qa-stop-v60" id="qa-stop" type="button" aria-label="Stop: свернуть вопросы" title="Stop · Свернуть вопросы" aria-controls="qa-catalog"><span class="qa-key-face" aria-hidden="true"><svg class="qa-key-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="qa-key-incision" fill-rule="evenodd" d="M6 6h12v12H6Zm2.4 3.2h3.2v.55H8.4Zm4.5 4.1h2.7v.5h-2.7Z"/><path class="qa-key-ink" fill-rule="evenodd" d="M6 6h12v12H6Zm2.4 3.2h3.2v.55H8.4Zm4.5 4.1h2.7v.5h-2.7Z"/></svg></span></button>
+              </span>
+              <svg class="qa-transport-hint-v60" viewBox="0 0 800 420" aria-hidden="true" focusable="false"><path class="qa-transport-arrow-play" d="M265 358 C205 375 175 343 190 310 C199 288 221 274 239 260 M223 268 L240 257 L237 278 M261 362 C204 379 174 346 187 313"/><path class="qa-transport-arrow-stop" d="M527 358 C585 375 610 342 589 310 C576 288 557 274 535 260 M539 277 L533 257 L552 264 M531 362 C588 378 613 346 592 313"/></svg>
+              <span class="qa-reveal-label" aria-hidden="true"><span id="qa-toggle-copy">Нажми Play,
+чтобы открыть вопросы</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="qa-catalog" id="qa-catalog" hidden inert>
+            <p class="qa-spoiler-warning" id="qa-spoiler-warning" role="note"><svg class="qa-spoiler-mark" viewBox="0 0 28 44" aria-hidden="true" focusable="false"><path d="M16 4 C15 12 13 19 12 27 M19 5 L15 26 M11 35 L12 38 L15 36 M10 37 L13 39"/></svg><span>Вопросы и ответы содержат <strong>спойлеры</strong> ко всему циклу «Черный Белый».</span></p>
+          <div class="qa-toolbar">
+            <label class="qa-search"><span aria-hidden="true">⌕</span><input id="qa-search" type="search" autocomplete="off" placeholder="Найти вопрос" aria-label="Поиск по вопросам к Ри"></label>
+            <div class="qa-filters" id="qa-filters" role="group" aria-label="Темы вопросов"></div>
+          </div>
+          <p class="qa-stats" id="qa-stats" role="status" aria-live="polite" aria-atomic="true"></p>
+          <div class="qa-results" id="qa-results"></div>
+          <button class="qa-collapse" id="qa-collapse" type="button">Свернуть вопросы <span aria-hidden="true">↑</span></button>
+        </div>
+        <div class="journey-next"><a href="#merch">Артефакты <span>↓</span></a></div>
+      </section>
+    </div>
+    <button class="effects-toggle gate-effects" id="effects-toggle" aria-pressed="true"><span class="effect-icon">◌</span><span>Движение <span id="effects-state">вкл</span></span></button>
+
+
+  </main>
+
+    <footer class="footer author-footer" id="contacts" aria-labelledby="footer-title">
+    <div class="author-footer-main">
+      <figure class="author-footer-art" aria-hidden="true"><img src="assets/performance-v101/footer-v18/story-door.webp" alt="" width="1536" height="1024" loading="lazy"></figure>
+      <div class="author-footer-shade" aria-hidden="true"></div>
+      <div class="author-footer-copy">
+        <h2 id="footer-title">История<br>продолжается</h2>
+        <figure class="bw-footer-cerberus" data-atmo-world="bw" aria-hidden="true"><img src="assets/performance-v101/bw-v28/cerberus-pencil.webp" alt="" width="1536" height="1024" loading="lazy"></figure>
+        <nav class="author-resource-links" id="author-resource-links" aria-label="Ри Гува в интернете">
+          <a href="https://t.me/riguva" target="_blank" rel="noopener noreferrer"><span>Telegram</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.instagram.com/rishaguva/" target="_blank" rel="noopener noreferrer" aria-describedby="instagram-note"><span>Instagram*</span><span aria-hidden="true">↗</span></a>
+<a href="https://www.litres.ru/author/ri-guva-19764391/" target="_blank" rel="noopener noreferrer"><span>Литрес</span><span aria-hidden="true">↗</span></a>
+<a href="https://vk.ru/riguva13" target="_blank" rel="noopener noreferrer"><span>ВКонтакте</span><span aria-hidden="true">↗</span></a>
+<a href="https://dzen.ru/id/602923cfd131974df2d68e67" target="_blank" rel="noopener noreferrer"><span>Дзен</span><span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </div>
+    <!-- shared-footer:v82:start -->
+<div class="site-footer-v82" data-shared-footer="v82">
+ <div class="site-footer-v82__inner">
+  <div class="site-footer-v82__top">
+   <a class="site-footer-v82__wordmark" href="#home" data-worlds-home aria-label="Ри Гува, к двум мирам">РИ ГУВА</a>
+   <a class="site-footer-v82__home" href="#home" data-worlds-home>К двум мирам <span aria-hidden="true">↑</span></a>
+  </div>
+  <nav class="site-footer-v82__documents" aria-label="Документы">
+   <button type="button" data-legal-open="offer" aria-haspopup="dialog" aria-controls="legal-dialog">Публичная оферта</button>
+   <button type="button" data-legal-open="privacy" aria-haspopup="dialog" aria-controls="legal-dialog">Политика обработки данных</button>
+   <button type="button" data-legal-open="consent" aria-haspopup="dialog" aria-controls="legal-dialog">Согласие на обработку данных</button>
+   <button type="button" data-legal-open="cookies" aria-haspopup="dialog" aria-controls="legal-dialog">Cookie</button>
+   <button type="button" data-legal-open="delivery" aria-haspopup="dialog" aria-controls="legal-dialog">Доставка и возврат</button>
+   <button type="button" data-legal-open="seller" aria-haspopup="dialog" aria-controls="legal-dialog">Реквизиты продавца</button>
+  </nav>
+  <div class="site-footer-v82__fineprint">
+   <p class="site-footer-v82__note" id="instagram-note">* Instagram принадлежит Meta Platforms Inc., признанной экстремистской организацией, деятельность которой запрещена <span class="site-footer-v82__nowrap">в&nbsp;РФ.</span></p>
+   <p class="site-footer-v82__credit">Разработка сайта <span aria-hidden="true">·</span> <span class="site-footer-v82__name">Ирина Мартынова</span></p>
+  </div>
+ </div>
+</div>
+<!-- shared-footer:v82:end -->
+
+  </footer>
+
+
+  <dialog id="world-switch-dialog" class="world-switch-dialog" aria-labelledby="world-switch-title"><button class="dialog-close" data-close aria-label="Закрыть выбор мира">×</button><h2 id="world-switch-title">Выбери мир</h2><div class="world-switch-options"><a class="world-switch-option" href="#world-black-white" data-enter-world="bw" aria-label="Перейти в мир Черный Белый"><span class="switch-world-number">01</span><strong>Черный Белый</strong><span class="switch-world-genre">Постапокалипсис</span><span class="switch-world-arrow" aria-hidden="true">↗</span></a><a class="world-switch-option" href="#world-shatserak" data-enter-world="shatserak" aria-label="Перейти в мир Шацерак"><span class="switch-world-number">02</span><strong>Шацерак</strong><span class="switch-world-genre">Тёмное фэнтези</span><span class="switch-world-arrow" aria-hidden="true">↗</span></a></div><nav class="world-switch-links-v71" aria-label="Дополнительная навигация"><a class="world-switch-home" href="#home" data-worlds-home>К двум мирам <span>↗</span></a><a class="world-switch-author-v71" href="about/index.html">Об авторе</a></nav></dialog>
+  <dialog id="product-dialog" class="product-dialog" aria-label="Книга или артефакт"><div class="product-dialog-controls"><button class="dialog-close" type="button" data-close aria-label="Закрыть карточку">×</button></div><div id="product-detail"></div></dialog>
+  <dialog id="photo-dialog" class="photo-dialog" aria-label="Изображения товара"><div class="photo-toolbar"><p id="photo-caption" aria-live="polite"></p><button class="photo-close" data-close aria-label="Закрыть крупный просмотр">×</button></div><div id="photo-view" class="photo-view"></div><div class="photo-navigation"><button data-photo-step="-1" aria-label="Предыдущее изображение">←</button><span id="photo-counter"></span><button data-photo-step="1" aria-label="Следующее изображение">→</button></div></dialog>
+    <dialog id="drop-dialog" class="drop-dialog" aria-labelledby="drop-title" aria-describedby="drop-intro">
+    <button class="drop-close" type="button" data-drop-close aria-label="Закрыть заявку">×</button>
+    <div id="drop-form-view" class="drop-form-view">
+      <p class="drop-kicker">Следующий дроп</p>
+      <h2 id="drop-title">Оставить заявку</h2>
+      <p id="drop-intro" class="drop-intro">Оставь контакт. Сообщим об открытии дропа, вариантах выпуска и цене.</p>
+<p id="drop-merch-announcements-v91" class="drop-merch-announcements-v91" hidden>Анонсы дропов будут в <a href="https://t.me/riguva" target="_blank" rel="noopener noreferrer">Telegram Ри <span aria-hidden="true">↗</span></a>.</p>
+      <p id="drop-preview-note" class="drop-preview-note" role="note">Тестовая версия сайта: заявки и оплата пока не принимаются.</p>
+      <form id="drop-form" novalidate>
+        <fieldset disabled id="drop-fields" class="drop-fields">
+          <legend class="drop-sr-only">Товар и контакт для уведомления</legend>
+          <div id="drop-fixed-product" class="drop-fixed-product" hidden><span>Меня интересует</span><strong id="drop-product-name"></strong><input id="drop-product-id" name="productId" type="hidden"></div>
+          <div id="drop-product-choice" class="drop-field">
+            <label for="drop-product-select">Что тебя интересует</label>
+            <select id="drop-product-select" name="productId" aria-describedby="drop-product-error"><option value="">Выбери из списка</option></select>
+            <p id="drop-product-error" class="drop-field-error" hidden></p>
+          </div>
+          <div class="drop-field"><label for="drop-name">Имя <span class="drop-optional">необязательно</span></label><input id="drop-name" name="name" type="text" autocomplete="given-name" maxlength="80" aria-describedby="drop-name-error"><p id="drop-name-error" class="drop-field-error" hidden></p></div>
+          <fieldset class="drop-contact-types"><legend>Куда сообщить о дропе</legend><label><input type="radio" name="contactType" value="telegram" checked><span>Telegram</span></label><label><input type="radio" name="contactType" value="email"><span>Электронная почта</span></label></fieldset>
+          <div class="drop-field"><label for="drop-contact" id="drop-contact-label">Telegram</label><input id="drop-contact" name="contact" type="text" autocomplete="username" inputmode="text" placeholder="@username" maxlength="254" required aria-describedby="drop-contact-hint drop-contact-error"><p id="drop-contact-hint" class="drop-field-hint">Имя пользователя или ссылка t.me.</p><p id="drop-contact-error" class="drop-field-error" hidden></p></div>
+          <div class="drop-consent"><label for="drop-consent"><input id="drop-consent" type="checkbox" name="consent" required aria-describedby="drop-consent-error"><span>Даю согласие на обработку контактных данных для уведомления о выбранном дропе.</span></label><p class="drop-document-links"><button type="button" data-drop-legal data-legal-open="consent">Текст согласия</button><span aria-hidden="true"> · </span><button type="button" data-drop-legal data-legal-open="privacy">Политика обработки данных</button></p><p id="drop-consent-error" class="drop-field-error" hidden></p></div>
+          <div class="drop-honeypot" aria-hidden="true"><label for="drop-website">Website</label><input id="drop-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        </fieldset>
+        <p id="drop-error" class="drop-error" role="alert" tabindex="-1" hidden></p>
+        <p id="drop-submit-status" class="drop-sr-only" aria-live="polite"></p>
+        <button disabled id="drop-submit" class="drop-submit" type="submit"><span>Оставить заявку</span><span aria-hidden="true">↗</span></button>
+        <p class="drop-form-note">Это запись в список ожидания. Цена и условия покупки появятся при открытии дропа.</p>
+      </form>
+      <button id="drop-back" class="drop-back" type="button" data-drop-close>Вернуться</button>
+    </div>
+    <section id="drop-success" class="drop-success" aria-labelledby="drop-success-title" hidden>
+      <span class="drop-success-mark" aria-hidden="true">✓</span><h2 id="drop-success-title" tabindex="-1">Заявка сохранена</h2><p id="drop-success-copy">Заявка сохранена локально в проверочной версии. Ри её пока не получила. Это не заказ и не оплата.</p><p id="drop-success-product" class="drop-success-product"></p><p class="drop-reference">Номер заявки <span id="drop-reference"></span></p><button class="drop-submit" type="button" data-drop-close><span>Вернуться</span><span aria-hidden="true">↗</span></button>
+    </section>
+  </dialog>
+
+  <dialog id="search-dialog" class="search-dialog"><div class="drawer-head"><h2>Поиск</h2><button class="dialog-close" data-close aria-label="Закрыть поиск">×</button></div><label class="search-field"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search-input" type="search" placeholder="Название книги или артефакта" autocomplete="off" aria-label="Поиск по магазину"></label><div id="search-results" class="search-results"></div></dialog>
+  <dialog id="menu-dialog" class="menu-dialog"><div class="drawer-head"><span class="wordmark">РИ ГУВА</span><button class="dialog-close" data-close aria-label="Закрыть меню">×</button></div><nav aria-label="Мобильное меню"><a href="#world-view">Мир <span>01</span></a><a href="#books">Книги <span>02</span></a><a href="#merch" data-world-merch>Артефакты <span>03</span></a><a href="#bonus">Бонусные материалы <span>04</span></a><a href="about/index.html">Об авторе <span>05</span></a></nav></dialog>
+  <dialog id="chapter-dialog" class="chapter-reader-v21" aria-labelledby="chapter-reader-title">
+    <div class="chapter-reader-toolbar"><a id="chapter-print-link" href="assets/bonus/chapter-1-print.pdf" download="Бонусная глава · для печати.pdf">PDF для печати <span aria-hidden="true">↓</span></a><button class="chapter-reader-close" type="button" data-chapter-close aria-label="Закрыть главу">×</button></div>
+    <article id="chapter-reader-content"><header><p class="chapter-reader-kicker">Черный Белый · Ри Гува</p><h2 id="chapter-reader-title" tabindex="-1">Бонусная глава</h2><p class="chapter-reader-warning">Содержит спойлеры.</p></header><p id="chapter-reader-status" role="status" hidden></p><div class="chapter-reader-body" id="chapter-reader-body"></div><footer class="chapter-reader-end"><button type="button" class="chapter-reader-next" id="chapter-reader-next" data-chapter-next="chapter-2">Следующая глава <span aria-hidden="true">→</span></button><button type="button" class="chapter-reader-back" data-chapter-close>К списку глав</button></footer></article>
+  </dialog>
+  <dialog id="bonus-dialog" class="bonus-dialog" aria-labelledby="bonus-dialog-title"><button class="dialog-close bonus-dialog-close" data-close aria-label="Закрыть бонусный материал">×</button><div id="bonus-dialog-content"></div></dialog>
+  <dialog id="legal-dialog" aria-labelledby="legal-dialog-title" aria-describedby="legal-document-status"><button class="dialog-close" type="button" data-close aria-label="Закрыть документ">×</button><h2 id="legal-dialog-title">Документы</h2><p id="legal-document-status">Документ готовится</p><p id="legal-document-copy"></p><p class="legal-document-note">Заглушка для будущего документа. Условия и реквизиты будут добавлены до запуска соответствующих функций сайта.</p></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="bw-shot-v80.js?v=83" defer></script>
+<!-- v84:scripts:start -->
+<script src="world-entry-v84.js?v=84" defer></script>
+<script src="bw-collector-v84.js?v=84" defer></script>
+<script src="library-refinement-v84.js?v=87" defer></script>
+<!-- v84:scripts:end -->
+<!-- v87:scripts:start -->
+<script src="archive-book-v87.js?v=99" defer></script>
+<script src="light-sheet-v87.js?v=87" defer></script>
+<!-- v87:scripts:end -->
+</body>
+</html>

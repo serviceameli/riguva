@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="320" viewBox="0 0 220 320">
+  <defs>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".2" numOctaves="3" seed="8"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".13"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+    <linearGradient id="shade"><stop stop-color="#534f40"/><stop offset=".12" stop-color="#b6af98"/><stop offset=".5" stop-color="#dbd4bc"/><stop offset="1" stop-color="#b9b09b"/></linearGradient>
+  </defs>
+  <path d="M1 1 65 2 118 1 163 3 219 1 218 48 219 95 217 145 219 194 217 246 219 319 163 317 112 319 64 317 1 319Z" fill="url(#shade)" filter="url(#paper)"/>
+  <path d="M18 24h182M18 296h182" stroke="#555143" stroke-width=".8" opacity=".5"/>
+  <g fill="none" stroke="#4c493d" stroke-linecap="round" opacity=".72">
+    <path d="m95 43 15-15 15 15-15 16Z" stroke-width="1.1"/><path d="M101 42h18m-9-8v18M105 65q5-4 10 0" stroke-width=".6"/>
+    <path d="M27 84q6-7 8 0t8 0l10-1 4 4 4-5 7 3 8-1 4 3 7-6 8 4 5-1 4 3 8-6 8 5 6-3 7 3 6-5 8 5 10-2 5 3 6-5 9 3 12-1M27 94l8-2 5 4 8-5 10 4 5-2 6 3 7-5 12 5 7-2 5 3 8-5 8 4 7-3 7 4 10-5 8 5 7-2 8 2 5-4 16 2M27 104q9-5 15 0t12-2l6 4 8-5 8 4 7-2 7 4 10-5 6 3 7-2 7 4 8-4 6 3 7-4 6 5 9-2 9 2 5-5 15 3M27 114l7-3 5 4 8-3 7 4 10-6 6 4 7-2 5 4 9-6 7 3 9-1 6 4 8-6 7 5 8-2 10 2 4-3 12 1" stroke-width="1.15"/>
+    <path d="M27 135q6-6 10 0l8-2 6 4 9-5 8 3 5-2 7 4 7-5 7 4 6-2 8 4 8-6 8 4 8-2 7 5 6-6 8 3 7-2 8 4 11-3M27 145l8-3 5 4 8-4 8 5 7-6 5 5 7-2 8 2 6-4 7 4 8-2 6 3 6-5 9 4 6-3 8 4 9-5 6 4 12-2 14 2M27 155q5-4 10 0t13-1l7 3 6-4 8 2 7-3 5 5 9-5 9 3 6-2 8 4 5-5 8 4 8-3 8 5 7-4 8 1 6-2 11 3M27 165l7-2 8 3 6-4 9 3 5-2 9 4 7-6 8 4 7-2 7 3 7-4 7 4 9-3 7 4 10-3" stroke-width="1.1"/>
+    <path d="M27 186q5-5 10 0t13-2l5 4 8-5 8 3 5-2 7 4 8-5 7 4 7-2 7 4 8-5 6 3 8-2 7 3 6-4 8 4 7-3 8 4 11-3M27 196l8-3 6 4 6-4 8 4 6-5 8 4 5-2 8 4 7-5 7 4 8-2 6 3 8-5 6 3 8-2 8 4 6-4 9 3 7-2 9 2M27 206q6-4 11 0t12-1l8 4 6-5 7 3 7-3 7 4 6-4 8 3 7-2 8 3 6-4 9 4 7-3 8 5 8-4 7 1 9-1 10 2M27 216l8-2 7 3 7-4 8 3 6-2 8 4 7-5 7 4 8-2 7 3 7-4 8 4 7-3 8 4 10-2" stroke-width="1.1"/>
+    <path d="M27 237q6-6 10 0l7-2 6 4 8-5 8 3 6-2 7 4 8-5 7 4 6-2 8 4 8-6 7 4 7-2 8 4 6-5 8 4 7-2 8 4 12-4M27 247l7-2 7 3 7-4 7 3 8-3 7 5 7-5 7 4 8-2 8 3 7-4 7 4 9-3 8 5 6-5 9 3 7-2 9 2M27 257q5-4 10 0t12-2l7 4 7-4 7 2 7-3 8 4 7-4 7 3 8-2 8 4 7-5 8 4 8-3 8 4 9-2M27 267l8-3 6 4 8-4 7 4 7-5 7 4 6-2 8 4 7-5 9 4 7-2 7 3 8-4 8 3" stroke-width="1.05"/>
+  </g>
+  <g stroke="#706850" fill="none" opacity=".2"><path d="M205 9q-8 27-2 55t-2 66 3 70-4 73M21 305q30-6 58-1t55-1 67 1"/><ellipse cx="186" cy="283" rx="10" ry="7"/><ellipse cx="38" cy="53" rx="8" ry="16"/></g>
+  <path d="M9 9v302" stroke="#514c3b" opacity=".55"/><path d="M214 9v302" stroke="#eee6cc" opacity=".4"/>
+</svg>

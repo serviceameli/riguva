@@ -1,0 +1,6 @@
+/* The hood and black eyes from the Shata poem, framed behind the world link. */
+body.author-document .author-next-world[href$='#world-shatserak']::before {
+  background-image: url('assets/shatserak-v23/hood-portrait-cutout.png');
+  background-size: 150% auto;
+  background-position: 18% 38%;
+}

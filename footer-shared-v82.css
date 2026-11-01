@@ -1,0 +1,63 @@
+/* One lower footer, compiled from source/footer-v82/fragment.html on every page. */
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82{
+ display:block;position:relative;z-index:5;isolation:isolate;pointer-events:auto;
+ width:100%;max-width:none;margin:0;padding:0;box-sizing:border-box;
+ border:0;border-top:1px solid #ffffff21;background:#080808;color:#b6b6b1;
+ --footer-ui:'Golos Text',Arial,sans-serif;
+ font:400 14px/1.6 var(--footer-ui);letter-spacing:0;text-align:left;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__inner{
+ box-sizing:border-box;width:100%;max-width:1536px;margin:0 auto;padding:30px 5% 64px;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__top{
+ display:flex;align-items:center;justify-content:space-between;gap:24px;min-width:0;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__wordmark{
+ display:inline-flex;align-items:center;min-height:48px;margin:0;padding:0;
+ color:#e8e8e2;font:400 34px/1 'Cover Condensed','Arial Narrow',Arial,sans-serif;
+ letter-spacing:2px;text-decoration:none;white-space:nowrap;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__home{
+ display:inline-flex;align-items:center;gap:24px;min-height:48px;margin:0;padding:0;
+ color:#c9c9c2;font:400 15px/1.5 var(--footer-ui);text-decoration:none;white-space:nowrap;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__home>span{font:400 22px/1 var(--footer-ui)}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__documents{
+ display:flex;flex-wrap:wrap;align-items:flex-start;gap:0 26px;margin:17px 0 0;padding:0;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__documents>button{
+ display:inline-flex;align-items:center;min-height:44px;max-width:100%;margin:0;padding:10px 0;
+ border:0;border-radius:0;background:none;box-shadow:none;color:#b5b5af;
+ font:400 13px/1.6 var(--footer-ui);letter-spacing:0;text-align:left;cursor:pointer;
+ text-transform:none;text-decoration:none;text-underline-offset:5px;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__fineprint{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:12px 28px;
+ margin:22px 0 0;padding:0;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__note{
+ min-width:0;max-width:none;width:auto;margin:0;padding:0;
+ color:#92928d;font:400 12px/1.65 var(--footer-ui);letter-spacing:0;text-wrap:pretty;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__credit{
+ display:flex;align-items:baseline;justify-content:flex-end;flex-wrap:wrap;gap:3px 6px;
+ min-width:0;width:auto;max-width:none;margin:0;padding:0;
+ color:#92928d;font:400 12px/1.65 var(--footer-ui);letter-spacing:0;text-align:right;
+}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__name{color:#c9c9c2;white-space:nowrap}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__nowrap{white-space:nowrap}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82 :is(a,button):hover{color:#f0f0eb}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82__documents>button:hover{text-decoration:underline}
+body:is(.cinema.two-worlds,.author-document) .site-footer-v82[data-shared-footer] :is(a,button):focus-visible{outline:2px solid #dcdcd5;outline-offset:5px}
+/* Keep the author's contact scene independent of the identical lower footer. */
+body.author-document #author-contact.author-contact{padding:0}
+body.author-document .author-contact-main-v82{padding:85px 7% 64px}
+@media(max-width:760px){
+ body:is(.cinema.two-worlds,.author-document) .site-footer-v82__inner{padding:24px 7% 48px}
+ body:is(.cinema.two-worlds,.author-document) .site-footer-v82__wordmark{font-size:29px;letter-spacing:1.6px}
+ body:is(.cinema.two-worlds,.author-document) .site-footer-v82__home{font-size:14px;gap:14px}
+ body:is(.cinema.two-worlds,.author-document) .site-footer-v82__documents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;margin-top:16px}
+ body:is(.cinema.two-worlds,.author-document) .site-footer-v82__fineprint{grid-template-columns:minmax(0,1fr);gap:14px;margin-top:20px}
+ body:is(.cinema.two-worlds,.author-document) .site-footer-v82__credit{justify-self:end}
+ body.author-document .author-contact-main-v82{padding:65px 7% 56px}
+}

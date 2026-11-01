@@ -1,0 +1,20 @@
+/* A reading measure for biography, and a tighter rhythm for the question index. */
+@media screen {
+  body.author-document .author-story-panel p {
+    line-height: 1.7;
+  }
+  body.author-document .author-story-panel p + p {
+    margin-top: .9em;
+  }
+  body.author-document .author-question {
+    padding-block: 14px;
+  }
+  body.author-document .author-question h4 {
+    line-height: 1.5;
+  }
+}
+@media screen and (max-width: 700px) {
+  body.author-document .author-story-stage {
+    min-height: 0;
+  }
+}

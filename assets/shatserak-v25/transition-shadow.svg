@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+  <!-- Three black translucent planes. Their theoretical combined alpha is
+       bounded by 1 - (1 - .18) * (1 - .27) * (1 - .32) = .592952.
+       Blur is confined to their edges; the site applies its own lower opacity. -->
+  <defs>
+    <linearGradient id="v25-transition-far" x1=".34" y1="0" x2=".57" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity=".18"/>
+      <stop offset=".48" stop-color="#000" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="v25-transition-middle" x1="1" y1=".36" x2="0" y2=".61">
+      <stop offset="0" stop-color="#000" stop-opacity=".27"/>
+      <stop offset=".54" stop-color="#000" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="v25-transition-near" x1=".14" y1="1" x2=".67" y2=".10">
+      <stop offset="0" stop-color="#000" stop-opacity=".32"/>
+      <stop offset=".46" stop-color="#000" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="v25-transition-far-edge" x="-24%" y="-42%" width="148%" height="184%">
+      <feGaussianBlur stdDeviation="32"/>
+    </filter>
+    <filter id="v25-transition-middle-edge" x="-25%" y="-18%" width="150%" height="136%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="v25-transition-near-edge" x="-15%" y="-25%" width="130%" height="150%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <path fill="url(#v25-transition-far)" filter="url(#v25-transition-far-edge)" d="M-160 -150 H1600 V179 C1426 148 1291 212 1155 250 C1033 284 941 253 858 227 C738 189 655 239 553 290 C438 347 299 351 176 306 C63 265 -51 294 -160 330 Z"/>
+  <path fill="url(#v25-transition-middle)" filter="url(#v25-transition-middle-edge)" d="M1590 -150 V950 H739 C728 833 802 746 820 652 C841 546 783 483 817 405 C854 321 976 286 1001 218 C1032 137 988 57 1032 -41 C1076 -140 1296 -157 1590 -150 Z"/>
+  <path fill="url(#v25-transition-near)" filter="url(#v25-transition-near-edge)" d="M-150 279 C-18 305 80 391 179 432 C280 473 370 437 462 466 C560 497 585 580 681 623 C766 661 866 649 948 717 C1004 764 1025 852 1037 948 H-150 Z"/>
+</svg>

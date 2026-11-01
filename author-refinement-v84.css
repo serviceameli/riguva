@@ -1,0 +1,92 @@
+/* One quiet manuscript sequence, with the dream revealed only on its final page. */
+body.author-document.author-tabs-ready-v84 .author-story-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  perspective: 1400px;
+}
+body.author-document.author-tabs-ready-v84 .author-story-panel,
+body.author-document.author-tabs-ready-v84 .author-story-panel[hidden] {
+  display: block !important;
+  grid-area: 1 / 1;
+  align-self: start;
+  width: 100%;
+  min-width: 0;
+  animation: none;
+  transform-origin: left center;
+}
+/* All three pages keep their natural measure in the same grid cell. Switching
+   never empties the stage, waits on a timer or changes its measured height. */
+body.author-document.author-tabs-ready-v84 .author-story-panel[hidden] {
+  visibility: hidden;
+  pointer-events: none;
+}
+body.author-document .author-folio-number-v84 {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+body.author-document .author-dream-v84 {
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid #17181530;
+}
+body.author-document .author-story-panel .author-dream-intro-v84 {
+  margin: 0 0 12px;
+  color: #66685f;
+  font: 400 16px/1.5 var(--author-ui);
+}
+body.author-document .author-dream-v84 blockquote {
+  margin: 0;
+  max-width: 760px;
+  font: 400 clamp(29px, 3.1vw, 42px)/1.25 var(--author-display);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+body.author-document :is(.author-lead, .author-story-panel p,
+  .author-questions-intro, .author-question h4) {
+  -webkit-hyphens: none;
+  hyphens: none;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+/* The author's voice stays neutral. Only the two doorways use their world face. */
+body.author-document .author-next-world[href$='#world-black-white'] strong {
+  font-family: var(--world-bw-font);
+  font-weight: 400;
+  font-size: clamp(34px, 3.9vw, 60px);
+  line-height: 1.14;
+  letter-spacing: .005em;
+  text-wrap: balance;
+  font-synthesis: none;
+}
+body.author-document .author-next-world[href$='#world-shatserak'] strong {
+  font-family: var(--world-shatserak-font);
+  font-weight: 300;
+  font-size: clamp(42px, 4.5vw, 68px);
+  line-height: 1.1;
+  letter-spacing: .015em;
+  text-transform: none;
+  font-synthesis: none;
+}
+@media (max-width: 700px) {
+  body.author-document .author-story-tabs {
+    grid-template-columns: .8fr 1.25fr 1fr;
+    gap: 8px;
+  }
+  body.author-document .author-story-tab {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 78px;
+    gap: 6px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  body.author-document .author-dream-v84 { margin-top: 28px; padding-top: 22px; }
+  body.author-document .author-dream-v84 blockquote { font-size: 30px; }
+  body.author-document .author-next-world[href$='#world-black-white'] strong {
+    font-size: clamp(32px, 7.9vw, 48px);
+  }
+  body.author-document .author-next-world[href$='#world-shatserak'] strong {
+    font-size: clamp(43px, 10.4vw, 58px);
+  }
+}

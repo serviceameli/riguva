@@ -1,0 +1,13 @@
+body.author-document #author-path .author-section-heading {
+  display: block;
+}
+body.author-document #author-path #author-path-title {
+  max-width: 1080px;
+  text-wrap: balance;
+}
+@media (max-width: 700px) {
+  body.author-document #author-path #author-path-title {
+    font-size: clamp(38px, 10vw, 54px);
+    line-height: 1.1;
+  }
+}

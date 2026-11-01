@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+  <!-- The broad contour comes from selected study 04; softness stays at its edge. -->
+  <defs><filter id="dream-edge" x="-12%" y="-15%" width="124%" height="130%"><feGaussianBlur stdDeviation="10"/></filter></defs>
+  <path fill="white" filter="url(#dream-edge)" d="M-160 300 C-12 286 84 156 235 220 C386 284 397 392 563 350 C704 314 769 194 916 239 C1090 292 1110 428 1284 364 C1428 310 1473 188 1600 218 V1060 H-160 Z"/>
+</svg>

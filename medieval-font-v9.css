@@ -1,0 +1,41 @@
+/* V9: Stieglitz SP Light, selected by Ameli from specimen option 01. */
+@font-face{
+ font-family:'Ri Medieval V9';font-style:normal;font-weight:300;font-display:swap;
+ src:url('assets/fonts-worlds/v9/StieglitzSP-Light.otf') format('opentype');
+ /* Use the title face for Cyrillic; punctuation uses the readable fallback. */
+ unicode-range:U+0400-052F;
+}
+:root{--world-shatserak-font:'Ri Medieval V9',Georgia,serif}
+.two-worlds .portal-fantasy .portal-copy h2,
+.two-worlds[data-world='shatserak'] .hero.world-hero #hero-title,
+.two-worlds[data-world='shatserak'] .chapter-copy #story-title,
+.two-worlds [data-reading-world='shatserak'] .path-heading h3,
+.two-worlds .product-card[data-series='shatserak'] .product-name,
+.two-worlds .product-detail[data-series='shatserak'] .detail-copy h2{
+ font-family:var(--world-shatserak-font);font-weight:300;font-style:normal;
+ text-transform:none;font-variant:normal;font-synthesis:none;
+ letter-spacing:.015em;line-height:1.08;
+ -webkit-text-stroke:0;transform:none;
+}
+.two-worlds[data-world='shatserak'] #hero-title em,
+.two-worlds[data-world='shatserak'] #story-title em{
+ font-family:inherit;font-weight:300;font-style:normal;
+}
+@media(max-width:600px){
+ .two-worlds .portal-fantasy .portal-copy h2{font-size:19.2vw;letter-spacing:0;line-height:1.08}
+ .two-worlds[data-world='shatserak'] .hero.world-hero #hero-title{font-size:20.1vw;letter-spacing:0;line-height:1.06}
+ .two-worlds[data-world='shatserak'] .chapter-copy #story-title{font-size:12.4vw;letter-spacing:0;line-height:1.15}
+ .two-worlds .product-detail[data-series='shatserak'] .detail-copy h2{font-size:46px;line-height:1.1}
+}
+
+/* Stieglitz SP Light, original font file unmodified.
+Copyright: Sasha Pavljenko / Павленко + дизайн. All rights reserved.
+Author and original SP download: https://pavljenko.ru/product/shrift-stieglitz
+Current SP terms: https://pavljenko.ru/page/sp (28.08.2026)
+This font uses the author's free SP terms, not SIL OFL.
+Personal and commercial use and embedding are permitted. Do not modify the
+font, remove author information or sell the font file. Retain the author's
+current SP terms and the original source link with redistribution.
+Full original author licence PDF, unchanged (embedded by the standalone packager):
+url('assets/fonts-worlds/v9/SP-License.pdf')
+*/

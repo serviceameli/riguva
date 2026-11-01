@@ -1,0 +1,28 @@
+/* V18. Readable, explicitly unfinished document screens. */
+body:is(.cinema.two-worlds,.author-document) #legal-dialog{
+ width:min(720px,calc(100vw - 36px));max-width:none;max-height:calc(100svh - 32px);
+ margin:auto;padding:54px 48px 46px;overflow-y:auto;border:1px solid #777;
+ background:#eeede8;color:#262626;box-shadow:0 25px 100px #0008;
+ font:400 17px/1.7 var(--ui-font,var(--author-ui,'Golos Text',Arial,sans-serif));
+}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog .dialog-close{
+ position:absolute;top:12px;right:13px;display:grid;place-items:center;width:44px;height:44px;
+ border:0;border-radius:0;padding:0;background:transparent;color:#303030;font:400 30px/1 var(--ui-font,var(--author-ui,'Golos Text',Arial,sans-serif));
+}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog #legal-dialog-title{
+ margin:0 0 26px;padding:0;color:#202020;font:500 34px/1.25 var(--ui-font,var(--author-ui,'Golos Text',Arial,sans-serif));
+ letter-spacing:-.025em;text-transform:none;overflow-wrap:anywhere;
+}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog #legal-document-status{
+ display:inline-block;margin:0 0 24px;padding:6px 11px;border:1px solid #7778;
+ color:#555;font:400 14px/1.55 var(--ui-font,var(--author-ui,'Golos Text',Arial,sans-serif));
+}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog #legal-document-copy{margin:0;color:#333;font:400 18px/1.75 var(--ui-font,var(--author-ui,'Golos Text',Arial,sans-serif))}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog .legal-document-note{margin:26px 0 0;padding-top:22px;border-top:1px solid #3334;color:#666;font:400 15px/1.65 var(--ui-font,var(--author-ui,'Golos Text',Arial,sans-serif))}
+body:is(.cinema.two-worlds,.author-document) #legal-dialog .dialog-close:focus-visible{outline:2px solid #222;outline-offset:0}
+@media(max-width:600px){
+ body:is(.cinema.two-worlds,.author-document) #legal-dialog{width:calc(100vw - 24px);max-height:calc(100svh - 24px);padding:58px 24px 30px}
+ body:is(.cinema.two-worlds,.author-document) #legal-dialog #legal-dialog-title{font-size:28px}
+ body:is(.cinema.two-worlds,.author-document) #legal-dialog #legal-document-copy{font-size:17px;line-height:1.7}
+}
