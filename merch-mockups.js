@@ -54,7 +54,7 @@
     if(!surface||!src)return '<span class="merch-mockup-unavailable">Изображение готовится</span>';
     const scope=['card','detail','zoom','thumb','cart'].includes(context)?context:'detail';
     const styles=`--surface-w:${surface.width};--surface-h:${surface.height};--photo-w:${surface.photoWidth};--photo-h:${surface.photoHeight};--texture-matrix:matrix3d(${surface.matrix.join(',')})`;
-    return `<span class="merch-sheet merch-sheet--${surface.kind} merch-sheet--${scope}" data-surface="${escape(id)}" style="${styles}" role="img" aria-label="${escape(alt||surface.label)}"><span class="merch-sheet-body" aria-hidden="true"><span class="merch-surface"><img class="surface-photo" src="${escape(src)}" width="${surface.photoWidth}" height="${surface.photoHeight}" alt="" loading="${scope==='thumb'?'lazy':'eager'}" draggable="false"><span class="merch-print-light"></span></span></span></span>`;
+    return `<span class="merch-sheet merch-sheet--${surface.kind} merch-sheet--${scope}" data-surface="${escape(id)}" style="${styles}" role="img" aria-label="${escape(alt||surface.label)}"><span class="merch-sheet-body" aria-hidden="true"><span class="merch-surface"><img class="surface-photo" src="${escape(src)}" width="${surface.photoWidth}" height="${surface.photoHeight}" alt="" loading="${scope==='detail'?'eager':'lazy'}" decoding="async" draggable="false"><span class="merch-print-light"></span></span></span></span>`;
   }
   function renderProduct(product,context='card'){
     const scope=context==='thumb'||context==='cart'?'thumb':'card';

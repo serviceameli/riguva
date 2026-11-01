@@ -34,7 +34,7 @@ const hasDesignMockup = p => !!(p.mockup&&window.RiMerchMockups);
 const productThumb = p => hasDesignMockup(p)?`<span class="product-thumb-mockup">${window.RiMerchMockups.renderProduct(p,'thumb')}</span>`:p.photosPending||!p.image?photoPlaceholder(p,true):`<img src="${safe(p.image)}" alt="${safe(p.name)}">`;
 function renderMerchSurface(p,photo,context='detail'){
   if(hasDesignMockup(p)&&photo.surface)return window.RiMerchMockups.renderSurface(photo.surface,photo.src,context,photo.alt);
-  return `<img class="merch-main-image${p.id==='cerberus-figurine'&&photo===p.gallery?.[1]?' cerberus-side-v95':''}" src="${safe(photo.src)}" alt="${safe(photo.alt)}">`;
+  return `<img class="merch-main-image${p.id==='cerberus-figurine'&&photo===p.gallery?.[1]?' cerberus-side-v95':''}" src="${safe(photo.src)}" alt="${safe(photo.alt)}" loading="${context==='detail'?'eager':'lazy'}" decoding="async">`;
 }
 const merchVisual = p => {
   if(hasDesignMockup(p))return window.RiMerchMockups.renderProduct(p,'card');

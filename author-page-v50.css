@@ -81,8 +81,8 @@ body.author-document{margin:0;background:#080808;color:#eeeee7;font:400 18px/1.7
 /* V57: cropped world details, distinct from the home page's hero scenes. */
 .author-next-world::before{content:'';position:absolute;inset:-1px;z-index:0;pointer-events:none;background-size:cover;background-repeat:no-repeat;opacity:.56;filter:grayscale(1) contrast(1.08);transform:scale(1);transition:opacity .4s ease,transform .8s cubic-bezier(.2,.65,.3,1)}
 .author-next-world::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,6,5,.82),rgba(5,6,5,.5) 62%,rgba(5,6,5,.35)),linear-gradient(0deg,rgba(5,6,5,.38),transparent 65%)}
-.author-next-world[href$='#world-black-white']::before{background-image:url('assets/bw-v17/parking-night.png');background-position:50% 47%}
-.author-next-world[href$='#world-shatserak']::before{background-image:url('assets/shatserak-v42/lake-reunion-final-v42.png');background-size:240% auto;background-position:100% 56%}
+.author-next-world[href$='#world-black-white']::before{background-image:var(--ri-author-bw-v108,none);background-position:50% 47%}
+.author-next-world[href$='#world-shatserak']::before{background-image:var(--ri-author-shatserak-v108,none);background-size:240% auto;background-position:100% 56%}
 .author-next-world:is(:hover,:focus-visible)::before{opacity:.7;transform:scale(1.025)}
 @media(prefers-reduced-motion:reduce){.author-next-world::before{transition:none}.author-next-world:is(:hover,:focus-visible)::before{transform:none}}
 .author-contact{padding:85px 7% 36px;background:#080808}

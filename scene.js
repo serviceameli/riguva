@@ -15,7 +15,7 @@
   const dialogs = [...document.querySelectorAll('dialog')];
   const hasOpenDialog = () => dialogs.some(dialog=>dialog.open);
   let modalOpen = hasOpenDialog();
-  let frame = 0, lastPaint = 0;
+  let frame = 0, lastPaint = 0, domSettled=document.readyState==='complete';
   function schedule() {
     if(frame || document.hidden || hasOpenDialog() || ![...instances].some(s=>s.active()&&s.animated()))return;
     frame=requestAnimationFrame(tick);
@@ -38,8 +38,13 @@
   Object.values(images).forEach(entry=>{
     entry.image=new Image();entry.image.decoding='async';
     entry.image.onload=()=>{entry.ready=true;instances.forEach(s=>s.refresh());schedule();};
-    entry.image.src=entry.src;
   });
+  function requestImage(id){
+    if(!domSettled)return;
+    const entry=images[worlds[id].image];
+    if(entry.requested)return;
+    entry.requested=true;entry.image.fetchPriority='high';entry.image.src=entry.src;
+  }
   function create(canvas, initial, main=false) {
     if(!canvas)return null;
     const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)return null;
@@ -80,12 +85,12 @@
       draw(world,mix,time);
     }
     const api={active,animated,paint,
-      setWorld(id){if(!worlds[id]||id===world)return;previous=world;world=id;changed=performance.now();resize();schedule();},
+      setWorld(id){if(!worlds[id]||id===world)return;previous=world;world=id;if(visible)requestImage(world);changed=performance.now();resize();schedule();},
       setEffects(value){enabled=!!value;if(!enabled){x=y=targetX=targetY=0;previous=null;}paint();schedule();},
-      refresh(){resize();}
+      refresh(){if(visible)requestImage(world);resize();}
     };
     instances.add(api);
-    const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){resize();schedule();}},{threshold:.01});observer.observe(stage);
+    const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){requestImage(world);resize();schedule();}},{threshold:.01});observer.observe(stage);
     new ResizeObserver(resize).observe(stage);
     hoverStage.addEventListener('pointermove',event=>{if(!enabled||reduced.matches)return;const r=hoverStage.getBoundingClientRect();targetX=(event.clientX-r.left)/r.width-.5;targetY=(event.clientY-r.top)/r.height-.5;schedule();},{passive:true});
     hoverStage.addEventListener('pointerleave',()=>{targetX=targetY=0;},{passive:true});
@@ -96,6 +101,7 @@
   const main=create(document.getElementById('world-canvas'),'black-white',true);
   if(main)window.RiScene=main;
   document.querySelectorAll('.portal-canvas').forEach(canvas=>create(canvas,canvas.dataset.previewWorld||'black-white'));
+  document.addEventListener('DOMContentLoaded',()=>{domSettled=true;requestAnimationFrame(()=>requestAnimationFrame(()=>instances.forEach(s=>s.refresh())));},{once:true});
   reduced.addEventListener('change',()=>{instances.forEach(s=>s.refresh());schedule();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else{instances.forEach(s=>s.refresh());schedule();}});
 })();
