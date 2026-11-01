@@ -1,0 +1,11 @@
+/* Desktop verse follows meaning. Narrow columns return to normal text flow. */
+body.cinema.two-worlds[data-world='shatserak'] #story .chapter-description .shat-verse-line-v115{display:block}
+body.cinema.two-worlds[data-world='shatserak'] #story .chapter-description{ text-wrap:pretty }
+body.cinema.two-worlds p,
+body.author-document p{ text-wrap:pretty }
+@media(max-width:600px){
+  body.cinema.two-worlds[data-world='shatserak'] #story .chapter-description{
+    font-size:clamp(26px,7.8vw,34px);line-height:1.28;max-width:100%;text-wrap:pretty;
+  }
+  body.cinema.two-worlds[data-world='shatserak'] #story .chapter-description .shat-verse-line-v115{display:inline-block;max-width:100%;vertical-align:top;white-space:normal;text-wrap:pretty}
+}
