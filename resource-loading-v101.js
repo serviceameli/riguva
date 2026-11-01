@@ -7,14 +7,14 @@
     {world:'bw', bounds:'#bw-bonus-lamp',
       background:{id:'bw-bonus-lamp',property:'--ri-parking-image-v101',src:'assets/performance-v101/bw-v17/parking-night.webp'}},
     {world:'bw', bounds:'#story',
-      background:{id:'story',property:'--ri-forest-image-v101',src:'assets/bw-v88/grey-forest.jpg'}},
+      background:{id:'story',property:'--ri-forest-image-v101',src:'assets/lossless-v113/bw-v88/grey-forest.jpg'}},
     {world:'bw', bounds:'#author-qa',
       background:{id:'author-qa',property:'--ri-radio-image-v101',src:'assets/performance-v101/bw-v31/jeep-radio.webp'}},
     {world:'shatserak', bounds:'#story', portrait:true},
     {bounds:'.author-next-worlds',
       background:{selector:'.author-next-world[href$="#world-black-white"]',property:'--ri-author-bw-v108',src:'assets/performance-v101/bw-v17/parking-night.webp'}},
     {bounds:'.author-next-worlds',
-      background:{selector:'.author-next-world[href$="#world-shatserak"]',property:'--ri-author-shatserak-v108',src:'assets/shatserak-v23/hood-portrait-cutout.png'}}
+      background:{selector:'.author-next-world[href$="#world-shatserak"]',property:'--ri-author-shatserak-v108',src:'assets/lossless-v113/shatserak-v23/hood-portrait-cutout.png'}}
   ];
   const imageSets = {
     switch:{width:768,src:'assets/responsive-v111/switch-states-768.webp'},
