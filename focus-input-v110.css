@@ -1,0 +1,13 @@
+/* These headings receive focus to announce navigation, rather than to accept input. */
+body:is(.cinema.two-worlds,.author-document) :is(h1,h2,h3,h4,h5,h6,[role="heading"])[tabindex="-1"]:focus {
+  outline:none!important;
+  outline-offset:0!important;
+}
+/* Safari can retain :focus-visible after scripted focus during a tap. */
+html[data-ri-focus-input="pointer"] body:is(.cinema.two-worlds,.author-document) :is(a,button,summary,[role="button"],[tabindex]):not(input):not(textarea):not(select):not([contenteditable]):focus {
+  outline:none!important;
+  outline-offset:0!important;
+}
+body:is(.cinema.two-worlds,.author-document) {
+  -webkit-tap-highlight-color:transparent;
+}
