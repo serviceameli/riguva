@@ -1,0 +1,12 @@
+/* Keep the BW footer's rotated artwork inside an opaque painted boundary.
+   The 2px exterior underpaint covers fractional raster seams without moving
+   either section. Shatserak's intentional overlapping artwork stays intact. */
+body.cinema.two-worlds[data-world='bw'] #contacts.footer.author-footer{
+ z-index:4;
+ overflow:hidden;
+ background-color:#080808;
+ box-shadow:0 -2px 0 #080808;
+}
+body.cinema.two-worlds[data-world='bw'] #contacts.footer.author-footer .author-footer-main{
+ overflow:hidden;
+}
