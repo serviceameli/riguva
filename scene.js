@@ -39,9 +39,10 @@
     entry.image=new Image();entry.image.decoding='async';
     entry.image.onload=()=>{entry.ready=true;instances.forEach(s=>s.refresh());schedule();};
   });
-  function requestImage(id){
+  function requestImage(id,owner,bounds){
     if(!domSettled)return;
     const entry=images[worlds[id].image];
+    if(window.RiImageLoading){window.RiImageLoading.request(entry.image,entry.src,{owner,bounds,world:worlds[id].image});return;}
     if(entry.requested)return;
     entry.requested=true;entry.image.fetchPriority='high';entry.image.src=entry.src;
   }
@@ -49,6 +50,7 @@
     if(!canvas)return null;
     const ctx=canvas.getContext('2d',{alpha:false});if(!ctx)return null;
     const stage=canvas.closest(main?'.cinema-stage':'.portal-scene')||canvas.parentElement;
+    const imageBounds=main?document.getElementById('world-view'):stage;
     const hoverStage=canvas.closest('.world-portal')||document.getElementById('experience')||stage;
     let world=initial, previous=null, changed=0, width=0,height=0,dpr=1,visible=false;
     let x=0,y=0,targetX=0,targetY=0,enabled=!document.body.classList.contains('still');
@@ -85,12 +87,12 @@
       draw(world,mix,time);
     }
     const api={active,animated,paint,
-      setWorld(id){if(!worlds[id]||id===world)return;previous=world;world=id;if(visible)requestImage(world);changed=performance.now();resize();schedule();},
+      setWorld(id){if(!worlds[id]||id===world)return;previous=world;world=id;if(visible)requestImage(world,canvas,imageBounds);changed=performance.now();resize();schedule();},
       setEffects(value){enabled=!!value;if(!enabled){x=y=targetX=targetY=0;previous=null;}paint();schedule();},
-      refresh(){if(visible)requestImage(world);resize();}
+      refresh(){if(visible)requestImage(world,canvas,imageBounds);resize();}
     };
     instances.add(api);
-    const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){requestImage(world);resize();schedule();}},{threshold:.01});observer.observe(stage);
+    const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible){requestImage(world,canvas,imageBounds);resize();schedule();}},{threshold:.01});observer.observe(stage);
     new ResizeObserver(resize).observe(stage);
     hoverStage.addEventListener('pointermove',event=>{if(!enabled||reduced.matches)return;const r=hoverStage.getBoundingClientRect();targetX=(event.clientX-r.left)/r.width-.5;targetY=(event.clientY-r.top)/r.height-.5;schedule();},{passive:true});
     hoverStage.addEventListener('pointerleave',()=>{targetX=targetY=0;},{passive:true});

@@ -23,7 +23,7 @@ const detailDescription = p => p.type==='book'
   : '<p class="detail-description">'+safe(p.description)+'</p>';
 let toastTimer, zoomProduct=null, zoomIndex=0;
 const bookMockup = (p,lazy=true) => {
-  return `<span class="book-mockup" data-book-id="${safe(p.id)}" data-book-world="${safe(p.series||'')}" data-volume-basis="${safe(p.volume?.basis||'unknown')}" style="--book-ratio:${p.coverRatio||0.6993};--book-thickness:${p.mockupThickness||0.17}"><span class="book-body"><span class="book-pages" aria-hidden="true"></span><span class="book-spine" aria-hidden="true"><span>РИ ГУВА</span><b>${safe(p.name)}</b></span><img class="book-front" src="${p.image}" alt="Обложка книги: ${safe(p.name)}" loading="${lazy?'lazy':'eager'}"><span class="book-front-board-edge" aria-hidden="true"></span><span class="book-cover-finish" aria-hidden="true"></span></span><span class="book-contact-shadow" aria-hidden="true"></span><span class="book-floor-shadow" aria-hidden="true"></span></span>`;
+  return `<span class="book-mockup" data-book-id="${safe(p.id)}" data-book-world="${safe(p.series||'')}" data-volume-basis="${safe(p.volume?.basis||'unknown')}" style="--book-ratio:${p.coverRatio||0.6993};--book-thickness:${p.mockupThickness||0.17}"><span class="book-body"><span class="book-pages" aria-hidden="true"></span><span class="book-spine" aria-hidden="true"><span>РИ ГУВА</span><b>${safe(p.name)}</b></span><img class="book-front" data-ri-deferred="${p.image}" data-ri-context="${lazy?'card':'detail'}" alt="Обложка книги: ${safe(p.name)}" loading="${lazy?'lazy':'eager'}"><span class="book-front-board-edge" aria-hidden="true"></span><span class="book-cover-finish" aria-hidden="true"></span></span><span class="book-contact-shadow" aria-hidden="true"></span><span class="book-floor-shadow" aria-hidden="true"></span></span>`;
 };
 window.bookMockup=bookMockup;
 const photoPlaceholder = (p,compact=false) => {
@@ -31,15 +31,15 @@ const photoPlaceholder = (p,compact=false) => {
   return compact?`<span class="product-thumb-placeholder" role="img" aria-label="Фото пока не добавлено">${safe(label)}</span>`:`<span class="photo-placeholder"><span class="photo-placeholder-title">${safe(label)}</span><span class="photo-placeholder-note">Фото пока не добавлено</span></span>`;
 };
 const hasDesignMockup = p => !!(p.mockup&&window.RiMerchMockups);
-const productThumb = p => hasDesignMockup(p)?`<span class="product-thumb-mockup">${window.RiMerchMockups.renderProduct(p,'thumb')}</span>`:p.photosPending||!p.image?photoPlaceholder(p,true):`<img src="${safe(p.image)}" alt="${safe(p.name)}">`;
+const productThumb = p => hasDesignMockup(p)?`<span class="product-thumb-mockup">${window.RiMerchMockups.renderProduct(p,'thumb')}</span>`:p.photosPending||!p.image?photoPlaceholder(p,true):`<img data-ri-deferred="${safe(p.image)}" data-ri-context="thumb" alt="${safe(p.name)}">`;
 function renderMerchSurface(p,photo,context='detail'){
   if(hasDesignMockup(p)&&photo.surface)return window.RiMerchMockups.renderSurface(photo.surface,photo.src,context,photo.alt);
-  return `<img class="merch-main-image${p.id==='cerberus-figurine'&&photo===p.gallery?.[1]?' cerberus-side-v95':''}" src="${safe(photo.src)}" alt="${safe(photo.alt)}" loading="${context==='detail'?'eager':'lazy'}" decoding="async">`;
+  return `<img class="merch-main-image${p.id==='cerberus-figurine'&&photo===p.gallery?.[1]?' cerberus-side-v95':''}" data-ri-deferred="${safe(photo.src)}" data-ri-context="${context}" alt="${safe(photo.alt)}" loading="${context==='detail'?'eager':'lazy'}" decoding="async">`;
 }
 const merchVisual = p => {
   if(hasDesignMockup(p))return window.RiMerchMockups.renderProduct(p,'card');
   if(p.photosPending||!p.image)return photoPlaceholder(p);
-  return `<img src="${safe(p.image)}" alt="${safe(p.name)}" loading="lazy">`;
+  return `<img data-ri-deferred="${safe(p.image)}" data-ri-context="card" alt="${safe(p.name)}" loading="lazy">`;
 };
 const bookShelfCard = p => {
   return `<article class="product-card book-shelf-card-v86 book-shelf-card-v93" data-series="${safe(p.series||'')}"><button class="product-visual" data-product="${safe(p.id)}" aria-label="Подробнее: ${safe(p.name)}">${bookMockup(p)}</button><div class="book-shelf-info-v93"><a class="product-name" href="#${safe(p.id)}" data-product="${safe(p.id)}">${safe(p.name)}</a>${window.RiBuyOptions?.previewFormats(p)||''}<div class="product-buy"><button type="button" class="add-button" data-product="${safe(p.id)}" aria-label="О книге: ${safe(p.name)}">О книге <span aria-hidden="true">↗</span></button></div></div></article>`;
@@ -71,7 +71,7 @@ window.RiCatalog={setWorld:setCatalogWorld,items:()=>products.map(({id,name,type
 setCatalogWorld(null);
 
 function showToast(message){clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').classList.add('show');toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),2600);}
-function showDialog(dialog){$$('dialog[open]').forEach(d=>d.close());dialog.showModal();document.body.style.overflow='hidden';}
+function showDialog(dialog){$$('dialog[open]').forEach(d=>d.close());dialog.showModal();document.body.style.overflow='hidden';window.RiImageLoading?.refresh();}
 $$('dialog').forEach(dialog=>{
   dialog.addEventListener('close',()=>{if(!document.querySelector('dialog[open]'))document.body.style.overflow='';});
   dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
@@ -104,7 +104,7 @@ function selectGalleryImage(id,index){
 function openPhoto(id){
   const p=getProduct(id);if(!p||p.photosPending||!p.image)return;
   zoomProduct=p;zoomIndex=Number($('#product-detail .gallery-thumb.is-active')?.dataset.galleryIndex||0);
-  renderPhoto();$('#photo-dialog').showModal();document.body.style.overflow='hidden';
+  renderPhoto();$('#photo-dialog').showModal();document.body.style.overflow='hidden';window.RiImageLoading?.refresh();
 }
 function renderPhoto(){
   const photos=zoomProduct.gallery?.length?zoomProduct.gallery:[{src:zoomProduct.image,alt:zoomProduct.name}];
