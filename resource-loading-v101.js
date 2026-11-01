@@ -15,6 +15,14 @@
   ];
   let frame=0;
   let ready=document.readyState==='complete',lastY=scrollY,direction=1;
+  const initialHash=location.hash;
+  const anchor=/^#(?:black-white|shatserak)\/([a-z-]+)$/.exec(initialHash);
+  const initialSection=anchor?anchor[1]:/^#world-(?:black-white|shatserak)$/.test(initialHash)?'world-view':!initialHash||initialHash==='#home'?'home':initialHash==='#contacts'?'contacts':null;
+  let anchorLocked=document.body.classList.contains('two-worlds')&&!!initialSection;
+  function allowed(section,force){
+    if(location.hash!==initialHash)anchorLocked=false;
+    return force||!anchorLocked||section?.id===initialSection;
+  }
   const assetBase=document.currentScript?.src||location.href;
   const embeddedURLs=new Map();
   function backgroundURL(src){
@@ -62,11 +70,11 @@
     const world=document.body.dataset.world;
     groups.forEach(group=>{
       const section=group.bounds?document.querySelector(group.bounds):group.selector?document.querySelector(group.selector):document.getElementById(group.section);
-      if((!group.world || group.world===world) && (force || near(section)))hydrate(group);
+      if((!group.world || group.world===world) && allowed(document.getElementById(group.section),force) && (force || near(section)))hydrate(group);
     });
     document.querySelectorAll('img[data-ri-deferred]').forEach(image=>{
       const bounds=image.getBoundingClientRect().height>0?image:image.closest('figure')||image.closest('section');
-      if((image.dataset.riWorld && image.dataset.riWorld!==world) || (!force && !near(bounds)))return;
+      if((image.dataset.riWorld && image.dataset.riWorld!==world) || !allowed(image.closest('section,footer'),force) || (!force && !near(bounds)))return;
       image.decoding='async';
       image.loading='eager';
       image.fetchPriority=bounds.getBoundingClientRect().top<innerHeight?'high':'low';
@@ -75,6 +83,8 @@
     });
   }
   function schedule(){if(!frame)frame=requestAnimationFrame(()=>{frame=requestAnimationFrame(()=>update());});}
+  function unlock(){anchorLocked=false;schedule();}
+  ['wheel','touchstart','pointerdown','keydown'].forEach(type=>addEventListener(type,unlock,{once:true,passive:true}));
   addEventListener('ri:atmosphere',schedule);
   addEventListener('scroll',()=>{const y=scrollY;if(Math.abs(y-lastY)>4)direction=y<lastY?-1:1;lastY=y;schedule();},{passive:true});
   addEventListener('resize',schedule,{passive:true});
