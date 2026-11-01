@@ -1,0 +1,112 @@
+/* Raster sprites use ordinary images instead of SVG image/use references. */
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p33-switch-art {
+  display:block;height:40%;aspect-ratio:auto;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p33-switch-art > img {
+  position:absolute;top:0;width:200%;height:100%;max-width:none;object-fit:fill;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p33-switch-off {left:0}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p33-switch-on {left:-100%}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-wide {
+  position:relative;container-type:size;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-stage-v111 {
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:100%;
+  width:min(100cqw,calc(100cqh * 2.40234375));aspect-ratio:2460/1024;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-half-v111 {
+  position:absolute;top:0;bottom:0;width:31.2195122%;overflow:hidden;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-half-left-v111 {left:0}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-half-right-v111 {right:0}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-half-v111 > img {
+  position:absolute;top:0;width:200%;height:100%;max-width:none;object-fit:fill;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-image-left-v111 {left:0}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-image-right-v111 {left:-100%}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-horde-near > img {
+  width:100%;height:100%;max-width:none;object-fit:contain;object-position:center top;
+}
+/* The caption is outside the native button, so Safari cannot clip its text. */
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 {
+  --lamp-switch-y:58.5%;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 #bw-light-switch {
+  overflow:visible;appearance:none;-webkit-appearance:none;
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-switch-caption {
+  left:calc(89% - 42px);right:auto;top:58.5%;
+  transform:translate(-100%,-50%) rotate(-4deg);
+}
+body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-switch-arrow-mobile-v111 {display:none}
+@media(max-width:900px) {
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-switch-caption {left:calc(89% - 37px)}
+}
+@media(max-width:600px) {
+  body.cinema.two-worlds[data-world='bw'] #bonus {
+    padding-top:18px;scroll-margin-top:-12px;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bonus > .section-heading {
+    margin:0 20px 12px;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bonus-title {
+    font-size:clamp(32px,8.6vw,38px);line-height:1.05;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 {
+    height:auto;min-height:0;--lamp-origin-y:calc(31.453333cqw - 24px);
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-lamp-illustration {
+    width:70%;left:22.91%;top:-24px;overflow:visible;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-bonus-wall {
+    background-size:auto,cover;background-position:center,32% 0;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 #bw-light-switch {
+    width:clamp(56px,14cqw,66px);height:clamp(72px,18.667cqw,88px);
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-switch-caption {
+    left:38.7%;right:auto;top:calc(100% + 10px);
+    width:clamp(150px,44cqw,190px);gap:0;justify-content:center;
+    transform:translateX(-50%);text-align:center;
+    font-size:clamp(18px,5cqw,21px);line-height:1.2;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 #bw-switch-copy {
+    max-width:none;white-space:nowrap;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-switch-arrow:not(.bw-switch-arrow-mobile-v111) {display:none}
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bw-switch-arrow-mobile-v111 {
+    display:block;position:absolute;left:calc(50% + 56px);
+    top:calc(-19.366667cqw - 18px);width:calc(35.21cqw - 56px);height:calc(19.366667cqw + 28px);
+    transform:none;color:#eee;filter:drop-shadow(0 1px 2px #000);
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 #bw-bonus-chapters,
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 #bw-bonus-chapters[hidden] {
+    width:calc(100% - 40px);max-width:none;height:auto;
+    padding:calc(46.666667cqw + 24px) 0 20px;
+  }
+  /* Light becomes opaque paper below the approaching faces, keeping text clear. */
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17[data-lit='true'] #bw-bonus-chapters::before {
+    content:'';position:absolute;z-index:-1;pointer-events:none;
+    top:calc(46.666667cqw);right:-20px;bottom:-20px;left:-20px;
+    background:linear-gradient(180deg,transparent,#eeede8 20px);filter:blur(4px);
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 #bw-bonus-chapters .bonus-chapter {
+    min-height:0;padding-block:8px;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .compact-chapters-v21 .bonus-chapter-copy h4 {
+    font-size:24px;line-height:1.12;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .compact-chapters-v21 .bonus-actions :is(a,button) {
+    font-size:16px;min-height:44px;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .bonus-chapter-warning {
+    margin:12px 0 0;padding:8px 10px;font-size:14px;line-height:1.4;gap:8px;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp[data-lit='true'] #bw-switch-copy {
+    color:#20201b;text-shadow:none;
+  }
+  body.cinema.two-worlds[data-world='bw'] #bw-bonus-lamp.bw-parking-v17 .p35-parking-horde {
+    top:105px;height:300px;
+  }
+}
