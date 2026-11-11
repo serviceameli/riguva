@@ -27,7 +27,7 @@
     if (nested) {
       world = nested[1] === 'black-white' ? 'bw' : 'shatserak';
       section = nested[2];
-    } else if (/^#(?:world-view|story|field-notes|night-lake|books|bonus|merch|bw-finale|author-qa|worlds)$/.test(h)) {
+    } else if (/^#(?:world-view|story|field-notes|night-lake|books|bonus|merch|bw-finale|author-qa|questions|worlds)$/.test(h)) {
       section = h.slice(1);
       world = history.state?.world;
       if (world !== 'bw' && world !== 'shatserak') {
@@ -40,7 +40,7 @@
   if (section === 'author') section = 'contacts';
   // These sections are not available in the current opposite world. Mirror
   // experience.js's hero fallback rather than warming an unrelated scene.
-  if ((world === 'bw' && section === 'night-lake') ||
+  if ((world === 'bw' && ['night-lake', 'questions'].includes(section)) ||
       (world === 'shatserak' && ['field-notes', 'bw-finale', 'author-qa', 'merch'].includes(section))) section = 'world-view';
   const bwHero = ['assets/scenes/bw-title-v6.webp', 'assets/scenes/bw-detailed-v6.webp'];
   const shatHero = ['assets/scenes/shatserak-detailed-v6.webp'];
@@ -64,6 +64,7 @@
       books: ['assets/current/Для сайта/shata.jpg', 'assets/author/Для сайта/sherka.jpg'],
       'night-lake': ['assets/performance-v101/shatserak-v42/lake-reunion-final-v42.webp'],
       bonus: [],
+      questions: ['assets/shatserak-qa/table-v2.jpg'],
       contacts: ['assets/performance-v101/footer-v18/story-door.webp']
     }
   };
@@ -89,7 +90,7 @@ window.RiCommerceConfig = Object.freeze({mode: 'static_preview'});
 </script>
   <link rel="stylesheet" href="site-styles-v113-1.css?v=113">
 
-  <script src="site-scripts-v116.js?v=116" defer></script>
+  <script src="site-scripts-v117.js?v=117" defer></script>
 
 
 
@@ -188,6 +189,7 @@ body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-wo
 <script defer src="assets/harstok-v24/pagination.js"></script>
 <script defer src="assets/harstok-v24/page-curl.js"></script>
 <script defer src="assets/harstok-v24/book.js"></script>
+  <link rel="stylesheet" href="shatserak-qa-v117.css?v=117">
 </head>
 <body class="cinema two-worlds">
   <div class="world-shadow-field-v19" aria-hidden="true"><span></span></div>
@@ -310,7 +312,7 @@ body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-wo
     </div>
   </main></template></harstok-library>
       </div>
-    <div class="journey-next" data-atmo-world="bw"><a href="#merch">Дальше <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div>    <div class="journey-next" data-atmo-world="shatserak"><a href="#contacts">История продолжается <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div></section>
+    <div class="journey-next" data-atmo-world="bw"><a href="#merch">Дальше <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div>    <div class="sqa-library-link" data-atmo-world="shatserak"><a href="#questions">Ри отвечает <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div></section>
 <section id="bw-finale" data-atmo-world="bw" hidden aria-label="Книги"><div id="book-grid-rest" hidden></div></section>
       <section class="author-qa section-pad" id="author-qa" data-atmo-world="bw" hidden aria-labelledby="author-qa-title">
         <div class="section-heading"><h2 id="author-qa-title">Ри отвечает</h2><p class="qa-intro">Архив ответов из авторского канала.</p></div>
@@ -341,6 +343,130 @@ body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-wo
           <button class="qa-collapse" id="qa-collapse" type="button">Свернуть вопросы <span aria-hidden="true"><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4M5 11l7-7 7 7"/></svg></span></button>
         </div>
         <div class="journey-next"><a href="#merch">Артефакты <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div>
+      </section>
+<section id="questions" class="shatserak-qa" data-atmo-world="shatserak" hidden aria-labelledby="sqa-heading">
+        <div class="sqa-inner">
+          <header>
+            <p class="sqa-kicker">Шацерак</p>
+            <h2 id="sqa-heading">Ри отвечает</h2>
+            <p id="sqa-spoiler" class="sqa-spoiler"><strong>Есть спойлеры.</strong> Открывай вопросы после «Шерки».</p>
+          </header>
+          <div class="sqa-scene sqa-table" data-open="false">
+            <div class="sqa-art-area">
+              <img class="sqa-table-art" data-ri-deferred="assets/shatserak-qa/table-v2.jpg" data-ri-world="shatserak" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+              <span class="sqa-almond" aria-hidden="true"></span>
+              <button class="sqa-bowl" type="button" aria-controls="sqa-featured" aria-describedby="sqa-spoiler sqa-bowl-hint" aria-expanded="false">
+                <span class="sqa-bowl-caption">Взять орешек <span aria-hidden="true">→</span></span>
+              </button>
+              <span id="sqa-bowl-hint" hidden>Откроется записка с вопросом читателя.</span>
+            </div>
+            <div class="sqa-note">
+              <span class="sqa-note-fold" aria-hidden="true"></span>
+              <article id="sqa-featured" aria-live="polite" hidden>
+                <p class="sqa-kicker sqa-featured-topic"></p>
+                <h3 class="sqa-featured-title"></h3>
+                <a class="sqa-answer" target="_blank" rel="noopener noreferrer">Ответ Ри в Telegram <span aria-hidden="true">↗</span></a>
+                <div class="sqa-controls">
+                  <button class="sqa-next" type="button">Ещё орешек</button>
+                  <button class="sqa-hide" type="button">Сложить записку</button>
+                </div>
+              </article>
+            </div>
+          </div>
+          <details class="sqa-archive">
+            <summary aria-describedby="sqa-spoiler"><span>Все вопросы <span class="sqa-count">18</span></span></summary>
+            <label class="sqa-search">Поиск по вопросам <input id="sqa-search" type="search" placeholder="Например, Митра" autocomplete="off"></label>
+          <section class="sqa-group">
+            <h3>О книгах</h3>
+            <ul>
+              <li>
+                <h4>Почему у первой книги название «Шата», а у второй «Шерка»?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4749" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Почему у первой книги название «Шата», а у второй «Шерка»?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Продумала ли Ри все сюжетные линии героев?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Продумала ли Ри все сюжетные линии героев?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+            </ul>
+          </section>
+          <section class="sqa-group">
+            <h3>Кнарки и магия</h3>
+            <ul>
+              <li>
+                <h4>Кнарки получают души детей Бадзун-Гра или остаются теми же людьми без эмоций?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4749" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Кнарки получают души детей Бадзун-Гра или остаются теми же людьми без эмоций?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Почему тени Митры не могли катать кнарков бесконечно, а ведьма читала заклятие на переломы вместо возвращения души?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4749" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Почему тени Митры не могли катать кнарков бесконечно, а ведьма читала заклятие на переломы вместо возвращения души?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Создала ли Митра Бадзун-Гра?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Создала ли Митра Бадзун-Гра?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Почему драгоценные камни усиливают Бадзун-Гра и как он об этом узнал?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Почему драгоценные камни усиливают Бадзун-Гра и как он об этом узнал?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Что будет с Бадзун-Гра, если столкнуть его с драгоценной дороги?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Что будет с Бадзун-Гра, если столкнуть его с драгоценной дороги?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Как долго кнарки могут обходиться без еды, воды и сна?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Как долго кнарки могут обходиться без еды, воды и сна?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Есть ли среди кнарков женщины помимо Шаты? Образуют ли кнарки пары и могут ли иметь детей?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Есть ли среди кнарков женщины помимо Шаты? Образуют ли кнарки пары и могут ли иметь детей?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Может ли мозг кнарка восстановиться после извлечения? Сказывается ли его повреждение на интеллекте?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Может ли мозг кнарка восстановиться после извлечения? Сказывается ли его повреждение на интеллекте?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Все ли кнарки теряют память при обращении? Почему Митра всё забыла, а другие нет? Откуда Шатронд знал, что был Корилом?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Все ли кнарки теряют память при обращении? Почему Митра всё забыла, а другие нет? Откуда Шатронд знал, что был Корилом?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+            </ul>
+          </section>
+          <section class="sqa-group">
+            <h3>Герои и сюжет</h3>
+            <ul>
+              <li>
+                <h4>Была ли мать Митры и Алики ведьмой?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4749" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Была ли мать Митры и Алики ведьмой?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Сцена, где Корил прогнал пуму, намекала на то, что он станет кнарком?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Сцена, где Корил прогнал пуму, намекала на то, что он станет кнарком?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Сны Митры были воспоминаниями или ещё повлияют на события?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Сны Митры были воспоминаниями или ещё повлияют на события?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Почему Митра послушно отвечала Бадзун-Гра в пещере? Она его боялась?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Почему Митра послушно отвечала Бадзун-Гра в пещере? Она его боялась?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Что Руру хотел рассказать Митре при их второй встрече перед смертью?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4750" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Что Руру хотел рассказать Митре при их второй встрече перед смертью?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Как в финале кнарки отыскали красный замок, скрытый волшебной вуалью?</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Как в финале кнарки отыскали красный замок, скрытый волшебной вуалью?»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+              <li>
+                <h4>Был ли кнарком брат хозяина в «Шате»? При его приезде из замка старались всех отослать.</h4>
+                <a class="sqa-answer" href="https://t.me/riguva/4775" target="_blank" rel="noopener noreferrer" aria-label="Видеоответ в Telegram на вопрос «Был ли кнарком брат хозяина в «Шате»? При его приезде из замка старались всех отослать.»">Видеоответ в Telegram <span aria-hidden="true">↗</span></a>
+              </li>
+            </ul>
+          </section>
+            <p class="sqa-empty" role="status" hidden>Ничего не найдено.</p>
+          </details>
+          <div class="sqa-contacts"><a href="#contacts">История продолжается <span aria-hidden="true">↓</span></a></div>
+        </div>
       </section>
     </div>
     <button class="effects-toggle gate-effects" id="effects-toggle" aria-pressed="true"><span class="effect-icon">◌</span><span>Движение <span id="effects-state">вкл</span></span></button>
