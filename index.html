@@ -63,7 +63,7 @@
       story: ['assets/lossless-v113/shatserak-v23/hood-portrait-cutout.png'],
       books: ['assets/current/Для сайта/shata.jpg', 'assets/author/Для сайта/sherka.jpg'],
       'night-lake': ['assets/performance-v101/shatserak-v42/lake-reunion-final-v42.webp'],
-      bonus: ['assets/performance-v101/shatserak-v22/harstok-library.webp', 'assets/shatserak-v96/archive-book-idle.webp'],
+      bonus: [],
       contacts: ['assets/performance-v101/footer-v18/story-door.webp']
     }
   };
@@ -89,7 +89,7 @@ window.RiCommerceConfig = Object.freeze({mode: 'static_preview'});
 </script>
   <link rel="stylesheet" href="site-styles-v113-1.css?v=113">
 
-  <script src="site-scripts-v115.js?v=115" defer></script>
+  <script src="site-scripts-v116.js?v=116" defer></script>
 
 
 
@@ -165,6 +165,29 @@ body.cinema.two-worlds.still #author-qa #qa-radio .qa-knob{transition:none!impor
 </style>
 <link rel="stylesheet" href="site-styles-v115-2.css?v=115">
 <!-- v99:style:end -->
+<style>
+body.cinema.two-worlds[data-world="shatserak"] #bonus{
+  padding:0!important;min-height:calc(100svh - 88px)!important;display:block!important;margin-top:0!important;
+  scroll-margin-top:1px!important;background:#101010!important;mask:none!important;-webkit-mask:none!important;
+  overflow-anchor:none;pointer-events:auto
+}
+body.cinema.two-worlds[data-world="shatserak"] #bonus[hidden]{display:none!important}
+body.cinema.two-worlds[data-world="shatserak"] #bonus :is(.bonus-shadow-field,.s25-shadows){display:none!important}
+body.cinema.two-worlds[data-world="shatserak"] #bonus .section-heading{
+  position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;
+  clip-path:inset(50%);margin:0!important;padding:0!important
+}
+body.cinema.two-worlds[data-world="shatserak"] #bonus #bonus-panel-shatserak{
+  width:100%!important;max-width:none!important;margin:0!important;padding:0!important
+}
+body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-world="shatserak"]{
+  position:relative!important;inset:auto!important;justify-content:center;padding:10px 0 34px;margin:0 auto
+}
+</style>
+<script defer src="assets/harstok-v24/memo.js"></script>
+<script defer src="assets/harstok-v24/pagination.js"></script>
+<script defer src="assets/harstok-v24/page-curl.js"></script>
+<script defer src="assets/harstok-v24/book.js"></script>
 </head>
 <body class="cinema two-worlds">
   <div class="world-shadow-field-v19" aria-hidden="true"><span></span></div>
@@ -211,7 +234,7 @@ body.cinema.two-worlds.still #author-qa #qa-radio .qa-knob{transition:none!impor
 <!-- v89:drops:end -->
     <div class="journey-next"><a href="#bonus">Бонусные материалы <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div></section>
       <section class="bonus-materials section-pad" id="bonus" hidden aria-labelledby="bonus-title">
-      <div class="bonus-shadow-field" data-atmo-world="shatserak" aria-hidden="true"><span class="cast-shadow-v19 cast-shadow-v19--archive"></span></div><figure class="archive-vision-v19 harstok-vision-v22" data-atmo-world="shatserak" aria-hidden="true"><img data-ri-deferred="assets/performance-v101/shatserak-v22/harstok-library.webp" data-ri-world="shatserak" alt="" width="1536" height="1024" loading="lazy"></figure><div class="section-heading"><h2 id="bonus-title">Бонусные материалы</h2></div>
+      <div class="bonus-shadow-field" data-atmo-world="shatserak" aria-hidden="true"><span class="cast-shadow-v19 cast-shadow-v19--archive"></span></div><div class="section-heading"><h2 id="bonus-title">Бонусные материалы</h2></div>
       <div class="bonus-panel" id="bonus-panel-bw" role="group" aria-label="Бонусные главы «Черного Белого»" hidden>
                 <div class="bw-parking-v17" id="bw-bonus-lamp" data-lit="false">
           <div class="bw-bonus-wall" aria-hidden="true"></div>
@@ -237,7 +260,55 @@ body.cinema.two-worlds.still #author-qa #qa-radio .qa-knob{transition:none!impor
 <div class="qa-bonus-entry"><a href="#author-qa">Ри отвечает <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div></div>
       <div class="bonus-panel" id="bonus-panel-shatserak" role="group" aria-label="Библиотека героев Шацерака" hidden>
 
-        <article class="bonus-library-card bonus-library-card--unified"><div class="bonus-library-copy"><p class="archive-intro-v67">Персонажи, места и понятия Шацерака.</p><p class="bonus-spoiler archive-spoiler-v67" role="note"><strong>Читать после «Шерки»</strong> <span>Есть спойлеры к обеим книгам.</span></p><button class="bonus-button" data-bonus-open="library"><img class="archive-key-art-v67" data-ri-deferred="assets/shatserak-v96/archive-book-idle.webp" data-ri-world="shatserak" width="96" height="96" alt="" aria-hidden="true"><span class="archive-action-label-v67">Открыть библиотеку</span></button></div></article>
+        <harstok-library><template shadowrootmode="open"><link rel="stylesheet" href="assets/harstok-v24/book.css"><main class="harstok-scene" aria-label="Библиотека Харстока">
+    <img class="room-photo" src="assets/performance-v101/shatserak-v22/harstok-library.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+    <div class="table" aria-hidden="true"></div>
+    <div class="shell">
+      <div class="before" id="before">
+        <p class="eyebrow scene-label">Библиотека Харстока</p>
+        <p class="warning" id="warning"><strong>Открывать после «Шерки»</strong><span>Спойлеры к обеим книгам</span></p>
+      </div>
+      <div class="workspace" id="workspace" hidden>
+        <nav class="controls" aria-label="Навигация по книге">
+          <button type="button" class="quiet" data-view="contents">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z"/></svg> Оглавление
+          </button>
+          <label class="search">
+            <span class="sr-only">Поиск по книге</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 5 5"/></svg>
+            <input type="search" id="query" placeholder="Поиск по книге" autocomplete="off">
+          </label>
+          <button type="button" class="quiet shut" id="shut">Закрыть <span class="sr-only">книгу</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </nav>
+      </div>
+      <div class="book" id="book" data-state="closed">
+        <div class="book-contact" aria-hidden="true"></div>
+        <div class="binding" aria-hidden="true"></div>
+        <div class="page-stack page-stack-left" aria-hidden="true"></div>
+        <div class="page-stack page-stack-right" aria-hidden="true"></div>
+        <div class="spread" id="spread" inert aria-hidden="true"></div>
+        <div class="lid" id="lid">
+          <button class="cover" id="cover" type="button" aria-describedby="warning">
+            <img class="cover-photo" src="assets/shatserak-v96/cover-texture.webp" width="384" height="576" alt="" loading="lazy" decoding="async">
+            <span class="cover-type">
+              <svg aria-hidden="true" width="34" height="47" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 82" fill="none"><path d="M8 7C20 8 27 5 30 3C33 5 40 8 52 7V42C52 59 42 71 30 79C18 71 8 59 8 42Z" stroke="#bcbcbc" stroke-width="1" opacity=".6"/><g stroke="#d6d6d6" stroke-linecap="square" stroke-linejoin="miter"><path d="M30 15V48M19 23V33C19 38 23 40 30 40C37 40 41 38 41 33V23" stroke-width="1.7"/><path d="M26 20L30 14L34 20M15 28L19 22L23 28M37 28L41 22L45 28" stroke-width="1.5"/></g><path d="M19 52C20 62 25 67 30 67C35 67 40 62 41 52C37 57 34 59 30 59C26 59 23 57 19 52Z" fill="#d6d6d6"/></svg>
+              <span class="cover-title">Библиотека<br>героев</span>
+              <span class="cover-action">Раскрыть книгу <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+            </span>
+          </button>
+          <div class="inner-cover" aria-hidden="true"></div>
+        </div>
+        <div class="probe" id="probe" inert aria-hidden="true"></div>
+      </div>
+      <p class="under" id="under">Персонажи <span>·</span> Места <span>·</span> Понятия</p>
+      <nav class="pager" id="pager" aria-label="Перелистывание книги" hidden>
+        <button type="button" class="quiet page-prev" data-turn="-1" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m6-6-6 6 6 6"/></svg> Назад</button>
+        <p id="page-status" aria-live="polite"></p>
+        <button type="button" class="quiet page-next" data-turn="1" aria-disabled="true">Дальше <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+      </nav>
+      <noscript><p class="under">Для раскрытия книги включите JavaScript.</p></noscript>
+    </div>
+  </main></template></harstok-library>
       </div>
     <div class="journey-next" data-atmo-world="bw"><a href="#merch">Дальше <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div>    <div class="journey-next" data-atmo-world="shatserak"><a href="#contacts">История продолжается <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a></div></section>
 <section id="bw-finale" data-atmo-world="bw" hidden aria-label="Книги"><div id="book-grid-rest" hidden></div></section>
