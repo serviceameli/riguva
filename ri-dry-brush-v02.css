@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Ri Dry Brush';
+  src: url('assets/fonts-worlds/ri-dry-brush-v02.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --world-bw-font: 'Ri Dry Brush', 'Cover Condensed', Arial, sans-serif;
+}
