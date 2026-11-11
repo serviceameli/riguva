@@ -188,7 +188,7 @@ body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-wo
 <script defer src="assets/harstok-v25/memo.js"></script>
 <script defer src="assets/harstok-v25/pagination.js"></script>
 <script defer src="assets/harstok-v25/page-curl.js"></script>
-<script defer src="assets/harstok-v25/book.js"></script>
+<script defer src="assets/harstok-v25/book.js?v=125"></script>
   <link rel="stylesheet" href="shatserak-qa-v117.css?v=117">
   <link rel="stylesheet" href="ri-dry-brush-v02.css">
 </head>
@@ -263,13 +263,14 @@ body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-wo
 <div class="qa-bonus-entry"><a href="#author-qa">Ри отвечает <span><svg class="ri-arrow-icon-v109" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div></div>
       <div class="bonus-panel" id="bonus-panel-shatserak" role="group" aria-label="Библиотека героев Шацерака" hidden>
 
-        <harstok-library><template shadowrootmode="open"><link rel="stylesheet" href="assets/harstok-v25/book.css"><link rel="stylesheet" href="assets/harstok-v25/entrance.css"><main class="harstok-scene" data-mode="hall" aria-label="Библиотека Харстока">
+        <harstok-library><template shadowrootmode="open"><link rel="stylesheet" href="assets/harstok-v25/book.css"><link rel="stylesheet" href="assets/harstok-v25/entrance.css?v=125"><main class="harstok-scene" data-mode="hall" aria-label="Библиотека Харстока">
     <div class="room-view" aria-hidden="true">
       <div class="room-canvas">
         <img class="room-photo" src="assets/harstok-v25/harstok-shelf.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="">
         <span class="shelf-inlay shelf-vacancy"></span>
         <span class="shelf-inlay shelf-relocated-book"></span>
       </div>
+      <img class="shelf-candle" src="assets/harstok-v25/shata-candle.webp" width="860" height="786" loading="lazy" decoding="async" alt="">
     </div>
     <div class="hall-view" aria-hidden="true">
       <div class="hall-camera">
@@ -312,7 +313,13 @@ body.cinema.two-worlds[data-world="shatserak"] #bonus .journey-next[data-atmo-wo
             </span>
           </span>
         </span>
-        <span class="shelf-book-label">Открыть книгу</span>
+        <span class="shelf-book-label">Открыть книгу
+          <svg class="shelf-book-arrow" viewBox="0 0 320 112" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M3 7C18 49 72 89 154 103C209 112 258 102 298 98" vector-effect="non-scaling-stroke"/>
+            <path class="shelf-arrow-flourish" d="M3 7C6 18 22 22 29 13C34 6 26 2 23 8M22 45C31 54 42 60 54 65" vector-effect="non-scaling-stroke"/>
+            <path class="shelf-arrow-head" d="M312 98C303 94 295 89 287 83L292 96L284 108C294 106 304 103 312 98Z"/>
+          </svg>
+        </span>
       </button>
       <button type="button" id="hall-return" aria-controls="library-hall"><span aria-hidden="true">←</span> Вернуться в зал</button>
     </div>

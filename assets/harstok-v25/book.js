@@ -422,6 +422,12 @@
     (arrivedAtShelf ? entry : hallEntry).focus({preventScroll:true});
   }
   function moveHallCamera(mode) {
+    if (host && desktop.matches) {
+      const header = document.querySelector('.header')?.getBoundingClientRect().height;
+      if (Math.abs(scene.getBoundingClientRect().top - header) > 1) {
+        window.RiWorlds?.navigate('bonus', {push:false,animate:false});
+      }
+    }
     hall.inert = true;
     shelf.inert = true;
     scene.dataset.mode = mode;
