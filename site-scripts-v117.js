@@ -1339,6 +1339,26 @@ const merchVisual = p => {
 const bookShelfCard = p => {
   return `<article class="product-card book-shelf-card-v86 book-shelf-card-v93" data-series="${safe(p.series||'')}"><button class="product-visual" data-product="${safe(p.id)}" aria-label="Подробнее: ${safe(p.name)}">${bookMockup(p)}</button><div class="book-shelf-info-v93"><a class="product-name" href="#${safe(p.id)}" data-product="${safe(p.id)}">${safe(p.name)}</a>${window.RiBuyOptions?.previewFormats(p)||''}<div class="product-buy"><button type="button" class="add-button" data-product="${safe(p.id)}" aria-label="О книге: ${safe(p.name)}">О книге <span aria-hidden="true">↗</span></button></div></div></article>`;
 };
+const upcomingShatserakBooks = [
+  {id:'shatserak-3', number:'3', name:'Шацерак', status:'В процессе написания', image:'assets/shatserak-upcoming/cover-iii.jpg'},
+  {id:'shatserak-4', number:'4', image:'assets/shatserak-upcoming/cover-iv.jpg'},
+  {id:'shatserak-5', number:'5', image:'assets/shatserak-upcoming/cover-v.jpg'},
+];
+function upcomingBookShelfCard(book){
+  const series = 'shatserak';
+  const volume = `Книга ${book.number}`;
+  const name = book.name || volume;
+  const heading = book.name ? safe(book.name) : `Книга <span class="upcoming-book-digit">${safe(book.number)}</span>`;
+  const status = book.status || 'Будущая книга серии «Шацерак»';
+  return `<article class="product-card book-shelf-card-v86 book-shelf-card-v93 book-shelf-card--upcoming" data-series="${series}">
+    <div class="product-visual" aria-hidden="true">${bookMockup({...book, name, series, coverRatio:2/3})}</div>
+    <div class="book-shelf-info-v93">
+      <h3 class="product-name">${heading}</h3>
+      ${book.name ? `<p class="upcoming-book-number">${safe(volume)}</p>` : ''}
+      <p class="upcoming-book-status">${safe(status)}</p>
+    </div>
+  </article>`;
+}
 const productCard = (p,i,merch=false) => p.type==='book'&&!merch?bookShelfCard(p,i):`<article class="product-card ${merch?'merch-card':''}" data-series="${safe(p.series||'')}"${merch?` data-merch-group="${safe(p.merchGroup||'paper')}"`:''}><button class="product-visual" data-product="${safe(p.id)}" aria-label="Подробнее: ${safe(p.name)}"><span class="product-tag">${safe(p.tag)}</span>${p.type==='book'?bookMockup(p):merchVisual(p)}</button><p class="product-meta">${safe(p.meta)}</p><a class="product-name" href="#${safe(p.id)}" data-product="${safe(p.id)}">${safe(p.name)}</a><div class="product-buy"><span class="product-formats">${safe(window.RiBuyOptions?.formats(p)||'Дропы автора')}</span><button type="button" class="add-button" ${p.type==='merch'?`data-drop-open="${safe(p.id)}"`:`data-product="${safe(p.id)}"`} aria-label="${p.type==='merch'?'Оставить заявку:':'Где купить:'} ${safe(p.name)}">${p.type==='merch'?'Оставить заявку':'Где купить'} <span aria-hidden="true">↗</span></button></div></article>`;
 function renderMerchShelfV91(merch){
   return merch.map(p=>window.RiMerchPreview.render(p,renderMerchSurface)).join('');
@@ -1346,21 +1366,28 @@ function renderMerchShelfV91(merch){
 let catalogWorld=null;
 function renderBooks(filter=catalogWorld){
   const books=products.filter(p=>p.type==='book'&&p.catalog!==false&&p.series===filter);
-  $('#book-grid').dataset.collection=filter;
-  $('#book-grid').innerHTML=books.map((p,i)=>productCard(p,i)).join('');
+  const upcoming = filter === 'shatserak' ? upcomingShatserakBooks : [];
+  const grid = $('#book-grid');
+  grid.dataset.collection=filter;
+  grid.innerHTML=books.map((p,i)=>productCard(p,i)).concat(upcoming.map(upcomingBookShelfCard)).join('');
+  if(filter === 'shatserak'){
+    grid.insertAdjacentHTML('beforeend', `<figure class="shatserak-shelf-illustration">
+      <img data-ri-deferred="assets/shatserak-upcoming/beryl-glasses.webp" data-ri-world="shatserak" width="1152" height="540" alt="Лежащие очки с круглыми стёклами из тёмного берилла, платиновой перемычкой и кожаными лентами" decoding="async">
+    </figure>`);
+  }
   $('#book-grid-rest').innerHTML='';
   $('#bw-finale').hidden=true;
-  return books.length;
+  return books.length + upcoming.length;
 }
 function setCatalogWorld(world){
   catalogWorld=['bw','shatserak'].includes(world)?world:null;
   $('#search-input').placeholder=catalogWorld==='shatserak'?'Название книги':'Название книги или артефакта';
   $('#search-input').setAttribute('aria-label','Поиск по миру');
-  renderBooks(catalogWorld);
+  const bookCount = renderBooks(catalogWorld);
   const merch=products.filter(p=>p.type==='merch'&&p.series===catalogWorld);
   $('#merch-grid').innerHTML=renderMerchShelfV91(merch);
   $('#merch').hidden=!merch.length;
-  return {books:products.filter(p=>p.type==='book'&&p.catalog!==false&&p.series===catalogWorld).length,merch:merch.length};
+  return {books:bookCount,merch:merch.length};
 }
 window.RiCatalog={setWorld:setCatalogWorld,items:()=>products.map(({id,name,type,series,catalog,release,price,merchGroup})=>({id,name,type,series,catalog,release,price,merchGroup}))};
 setCatalogWorld(null);

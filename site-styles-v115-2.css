@@ -3773,6 +3773,44 @@ body.cinema.two-worlds[data-world] #books #book-grid .book-shelf-info-v93 > .pro
 body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .book-shelf-info-v93 > .product-name {
   font-size:44px;
 }
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .book-shelf-card--upcoming > .product-visual {
+  cursor:default;
+  pointer-events:none;
+}
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .book-shelf-card--upcoming .upcoming-book-number {
+  margin:12px 0 0;
+  color:var(--shelf-muted);
+  font:400 13px/1.45 var(--ui-font);
+}
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .book-shelf-card--upcoming .upcoming-book-status {
+  margin:4px 0 0;
+  color:var(--shelf-text);
+  font:400 15px/1.5 var(--ui-font);
+}
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .book-shelf-card--upcoming .product-name + .upcoming-book-status {
+  margin-top:12px;
+}
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .upcoming-book-digit {
+  font-family:'Cover Condensed',var(--ui-font);
+  font-weight:400;
+  font-size:.84em;
+}
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid > .shatserak-shelf-illustration {
+  display:grid;
+  place-items:center;
+  min-width:0;
+  margin:0;
+}
+body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .shatserak-shelf-illustration > img {
+  display:block;
+  width:min(90%,410px);
+  height:auto;
+}
+@media(max-width:1000px){
+  body.cinema.two-worlds[data-world='shatserak'] #books #book-grid .shatserak-shelf-illustration > img {
+    width:min(86%,340px);
+  }
+}
 body.cinema.two-worlds[data-world] #books #book-grid .book-shelf-info-v93 > .book-edition-v93 {
   margin:16px 0 24px;
   color:var(--shelf-muted);
