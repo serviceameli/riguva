@@ -235,8 +235,8 @@
   --callout-top:clamp(100px,30cqh,228px);
   --callout-arrow-x:clamp(96px,12cqw,176px);
   --callout-arrow-y:34px;
-  --callout-tip-x:calc(var(--entry-left) - var(--entry-depth) * .16);
-  --callout-tip-y:calc(var(--entry-top) - var(--entry-height) * .33);
+  --callout-tip-x:calc(var(--entry-left) - max(48px,var(--entry-depth)) * .5 - clamp(10px,1cqw,16px));
+  --callout-tip-y:calc(var(--entry-top) - var(--entry-height) * .41);
   position:absolute;
   top:var(--entry-center-y);
   left:var(--entry-left);
@@ -375,10 +375,11 @@
   .shelf-book-label{font-size:clamp(29px,2.72cqw,40px)}
 }
 .shelf-book-label .shelf-book-arrow{
+  --arrow-start-x:min(var(--callout-arrow-x),calc(var(--callout-tip-x) - var(--callout-left) - 34px));
   position:absolute;
-  left:var(--callout-arrow-x);
+  left:var(--arrow-start-x);
   top:var(--callout-arrow-y);
-  width:max(34px,calc((var(--callout-tip-x) - var(--callout-left) - var(--callout-arrow-x)) * 1.026));
+  width:calc((var(--callout-tip-x) - var(--callout-left) - var(--arrow-start-x)) * 1.026);
   height:max(34px,calc((var(--callout-tip-y) - var(--callout-top) - var(--callout-arrow-y)) * 1.143));
   color:#c7ab7c;
   fill:none;
