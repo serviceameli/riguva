@@ -1765,6 +1765,8 @@ $$('#menu-dialog nav a').forEach(a=>a.onclick=()=>$('#menu-dialog').close());
     const imageBounds=main?document.getElementById('world-view'):stage;
     const hoverStage=canvas.closest('.world-portal')||document.getElementById('experience')||stage;
     let world=initial, previous=null, changed=0, width=0,height=0,dpr=1,visible=false;
+    let sceneWidth=0, leftOverlap=0;
+    const portal=canvas.closest('.world-portal');
     let x=0,y=0,targetX=0,targetY=0,enabled=!document.body.classList.contains('still');
     const active=()=>visible&&width>0&&height>0&&!document.hidden&&!hasOpenDialog();
     const animated=()=>enabled&&!reduced.matches&&images[worlds[world].image].ready;
@@ -1772,6 +1774,9 @@ $$('#menu-dialog nav a').forEach(a=>a.onclick=()=>$('#menu-dialog').close());
       if(document.hidden || hasOpenDialog())return;
       const r=stage.getBoundingClientRect();width=r.width;height=r.height;
       if(!width||!height)return;
+      const portalBounds=portal?.getBoundingClientRect();
+      sceneWidth=portalBounds?.width??width;
+      leftOverlap=portalBounds?Math.max(0,portalBounds.left-r.left):0;
       dpr=Math.min(devicePixelRatio||1,main?1.5:1.2);
       const w=Math.round(width*dpr),h=Math.round(height*dpr);
       if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
@@ -1782,10 +1787,14 @@ $$('#menu-dialog nav a').forEach(a=>a.onclick=()=>$('#menu-dialog').close());
       const photo=entry.image;
       const motion=enabled&&!reduced.matches;
       const zoom=1.055+(motion?Math.sin(time/15000)*.012:0);
-      const fit=Math.max(width/photo.naturalWidth,height/photo.naturalHeight)*zoom;
-      const w=photo.naturalWidth*fit,h=photo.naturalHeight*fit;
+      const fit=Math.max(sceneWidth/photo.naturalWidth,height/photo.naturalHeight)*zoom;
       const focal=main&&width/height>1.2?.5:config.focal;
-      const px=(width-w)*focal+(motion?x*7:0);
+      const drift=motion?x*7:0;
+      const w=Math.max(photo.naturalWidth*fit,width);
+      const h=w*photo.naturalHeight/photo.naturalWidth;
+      const focalX=leftOverlap+(sceneWidth-w)*focal+drift;
+      // Keep the original crop unless the wider transition would reveal a canvas edge.
+      const px=portal&&width>sceneWidth?Math.min(0,Math.max(width-w,focalX)):focalX;
       const py=(height-h)*.5+(motion?y*5:0);
       ctx.globalAlpha=alpha;ctx.drawImage(photo,px,py,w,h);ctx.globalAlpha=1;
     }

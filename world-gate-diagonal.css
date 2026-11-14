@@ -1,0 +1,57 @@
+/* The desktop illustrations overlap beneath the two world links. */
+@media (min-width: 601px) {
+  .world-portals {
+    --gate-angle: 100.5deg;
+    --gate-overlap: calc(max(9.3svh, 73px) + 25px);
+    position: relative;
+    isolation: isolate;
+  }
+
+  .world-portal,
+  .world-portal:first-child {
+    isolation: auto;
+    overflow: visible;
+    border-right: 0;
+  }
+
+  .portal-scene {
+    pointer-events: none;
+  }
+
+  .portal-city .portal-scene {
+    right: calc(-1 * var(--gate-overlap));
+    z-index: -2;
+  }
+
+  .portal-city .portal-canvas {
+    transform-origin: calc(50% - var(--gate-overlap) / 2) center;
+  }
+
+  .portal-fantasy .portal-scene {
+    left: calc(-1 * var(--gate-overlap));
+    mask-image: linear-gradient(var(--gate-angle), transparent calc(50% - 16px), #000 calc(50% + 16px));
+    mask-size: calc(200% - var(--gate-overlap) - var(--gate-overlap)) 100%;
+    mask-position: right top;
+    mask-repeat: no-repeat;
+  }
+
+  .portal-fantasy .portal-canvas {
+    transform-origin: calc(50% + var(--gate-overlap) / 2) center;
+  }
+
+  .world-portals::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      var(--gate-angle),
+      transparent calc(50% - 34px),
+      rgb(0 0 0 / 14%) calc(50% - 18px),
+      rgb(0 0 0 / 38%) 50%,
+      rgb(0 0 0 / 14%) calc(50% + 18px),
+      transparent calc(50% + 34px)
+    );
+  }
+}
