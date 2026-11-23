@@ -2967,28 +2967,31 @@ body.cinema.two-worlds #bonus-dialog[data-view='memo'].light-sheet-forming-v87 {
 }
 body.still .archive-light-leaf-v87, body.still .archive-light-edge-v87 { display: none; }
 
-/* source: forest-scene-v88.css */
-/* The quotation's grey forest is one local scene within the BW journey. */
+/* The Black White quotation scene. */
 body.cinema.two-worlds[data-world='bw'] #story {
   background-color: #070707;
   background-image:
     linear-gradient(0deg, #050505 0%, #05050508 16%, transparent 82%, #070707 100%),
     linear-gradient(90deg, #07070730, transparent 58%),
-    var(--ri-forest-image-v101,none);
+    var(--ri-bw-quote-image,none);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   body.cinema.two-worlds[data-world='bw'] #story {
     background-image:
-      linear-gradient(0deg, #050505 0%, #05050512 23%, transparent 78%, #070707 100%),
-      linear-gradient(90deg, #070707a3, #07070770 67%, #07070740),
-      var(--ri-forest-image-v101,none);
-    background-size: cover;
-    background-position: 66% center;
+      linear-gradient(0deg, #050505 0%, transparent 17%, transparent 61%, #070707 80%),
+      linear-gradient(90deg, #070707b3, #07070760 55%, transparent 100%),
+      var(--ri-bw-quote-image,none);
+    background-size: cover, cover, auto 76%;
+    background-position: center, center, 85% bottom;
   }
+}
+
+@media (max-width: 600px) {
+  body.cinema.two-worlds[data-world='bw'] #story-title { font-size: 10.4vw; }
 }
 
 @media print {

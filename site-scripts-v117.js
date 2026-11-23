@@ -113,7 +113,7 @@
     {world:'bw', bounds:'#bw-bonus-lamp',
       background:{id:'bw-bonus-lamp',property:'--ri-parking-image-v101',src:'assets/performance-v101/bw-v17/parking-night.webp'}},
     {world:'bw', bounds:'#story',
-      background:{id:'story',property:'--ri-forest-image-v101',src:'assets/lossless-v113/bw-v88/grey-forest.jpg'}},
+      background:{id:'story',property:'--ri-bw-quote-image',src:'assets/lossless-v113/bw-v84/black-quote-silhouette.jpg'}},
     {world:'bw', bounds:'#author-qa',
       background:{id:'author-qa',property:'--ri-radio-image-v101',src:'assets/performance-v101/bw-v31/jeep-radio.webp'}},
     {world:'shatserak', bounds:'#story', portrait:true},
@@ -1046,16 +1046,6 @@
 (() => {
   'use strict';
   const editions={
-  "black-white": {
-    "text": "https://www.litres.ru/book/ri-guva-19764391/chernyy-belyy-45102787/",
-    "audio": "https://www.litres.ru/audiobook/ri-guva-19764391/chernyy-belyy-67940762/",
-    "publisher": "https://ast.ru/book/chernyy-belyy-893506/",
-    "stores": [
-      {"name":"Читай-город","url":"https://www.chitai-gorod.ru/product/cernyj-belyj-3152437"},
-      {"name":"Ozon","url":"https://www.ozon.ru/product/chernyy-belyy-guva-ri-3672904110/"},
-      {"name":"Book24","url":"https://book24.ru/product/cernyj-belyj-8796765/"}
-    ]
-  },
   "grey-forest": {
     "text": "https://www.litres.ru/book/ri-guva-19764391/seryy-les-45874197/",
     "audio": "https://www.litres.ru/audiobook/ri-guva-19764391/seryy-les-67640600/",
@@ -1097,7 +1087,7 @@
   const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const formatDateLabel=value=>escape(value).replace(/(\d{1,2}) (ноября|декабря)/g,'$1&nbsp;$2');
   const link=(url,label,title)=>`<a class="edition-link" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(title)}">${escape(label)} <span aria-hidden="true">↗</span></a>`;
-  const isPaperBook=p=>['black-white','grey-forest','silence-1','silence-2'].includes(p.id);
+  const isPaperBook=p=>['grey-forest','silence-1','silence-2'].includes(p.id);
   const commerceOffer=p=>window.RiCommerce?.offer(p.id);
   function offerSummary(p,{showRelease=true}={}){
     const offer=commerceOffer(p);if(!offer)return '';
@@ -1145,7 +1135,8 @@
       const price=drops?.priceNote(p)||(typeof p.price==='number'&&Number.isFinite(p.price)?`Ориентировочная цена: ${new Intl.NumberFormat('ru-RU').format(p.price)} ₽.`:'Цена при анонсе дропа.');
       return `<section class="edition-choices merch-drop-choice" data-release="${escape(release.status)}" aria-label="Выпуск и заявка"><div class="edition-author"><p class="edition-label">${escape(release.label)}</p><h3>${escape(release.title)}</h3><p>${escape(release.description)}</p><p class="merch-announcement-v91">Анонсы дропов будут в <a href="https://t.me/riguva" target="_blank" rel="noopener noreferrer">Telegram Ри <span aria-hidden="true">↗</span></a>.</p><p class="edition-price-note">${escape(price)}</p><button type="button" class="edition-request" data-drop-open="${escape(p.id)}">${escape(release.requestLabel)} <span aria-hidden="true">↗</span></button><button type="button" class="edition-all-merch-v89" data-drop-open="${escape(drops?.scope.id||'all-merch-drops')}">Все будущие дропы мерча <span aria-hidden="true">↗</span></button></div></section>`;
     }
-    const e=editions[p.id]||{};
+    const e=editions[p.id];
+    if(!e)return '';
     const stores=(e.stores||[]).map(store=>link(store.url,store.name,p.name+' / бумажная книга в '+store.name)).join('');
     const publisher=e.publisher?`<div class="edition-channel"><h4>Бумажная книга</h4><p>АСТ · NoSugar Books</p><div class="edition-store-links-v98" aria-label="Бумажная книга в магазинах">${stores}</div>${link(e.publisher,'Об издании на АСТ',p.name+' на сайте издательства АСТ')}</div>`:isPaperBook(p)?`<div class="edition-channel"><h4>Бумажная книга</h4>${link('https://t.me/riguva','Telegram Ри',p.name+' / Telegram Ри')}</div>`:'';
     const digital=`<div class="edition-channel"><h4>На Литрес</h4><div class="edition-digital-links">${e.text?link(e.text,'Читать',p.name+' / электронная книга на Литрес'):''}${e.audio?link(e.audio,'Слушать',p.name+' / аудиокнига на Литрес'):''}</div></div>`;
@@ -1295,7 +1286,7 @@
 /* source: app.js */
 'use strict';
 const products = [
-  {"id":"black-white","coverRatio":0.636152,"name":"Черный Белый","image":"assets/current/Для сайта/black-white.jpg","type":"book","series":"bw","worldName":"Черный Белый","catalog":true,"meta":"Постапокалипсис · Книга I","price":1190,"tag":"Начать здесь","description":"Мир рухнул и ожил заново, позволяя закрытому городу Сфера властвовать над выжившими людьми. Они не знают, что есть другие новые города, а знают лишь то, что за стеной их ожидают голодные хищники, рожденные Мировой Катастрофой. Лекса Ройс тоже верит в это, но вынуждена бежать из Сферы, в которой прожила всю жизнь. Она хочет лишь спасти брата, но теперь за ней охотится целая армия. Она хочет жить вдалеке от опасности, но ее манит новый город… и охотник, которому нет равных. Лекса обещает, что полюбит новую жизнь, но в нее врывается ураган. И зовут его мистер Блэк.","specs":["Постапокалипсис","672 стр.","Книга I","18+"],"source":"https://ast.ru/book/chernyy-belyy-893506/","sourceLabel":"Об издании на сайте АСТ ↗","format":null,"volume":{"pages":672,"basis":"print","isbn":"978-5-17-179711-9","widthMm":132,"heightMm":208,"depthMm":45,"source":"https://ast.ru/book/chernyy-belyy-893506/","depthKind":"publisher_dimensions"},"mockupThickness":0.216346},
+  {"id":"black-white","coverRatio":0.636152,"name":"Черный Белый","image":"assets/current/Для сайта/black-white.jpg","type":"book","series":"bw","worldName":"Черный Белый","catalog":true,"meta":"Постапокалипсис · Книга I","price":null,"tag":"Начать здесь","description":"Мир рухнул и ожил заново, позволяя закрытому городу Сфера властвовать над выжившими людьми. Они не знают, что есть другие новые города, а знают лишь то, что за стеной их ожидают голодные хищники, рожденные Мировой Катастрофой. Лекса Ройс тоже верит в это, но вынуждена бежать из Сферы, в которой прожила всю жизнь. Она хочет лишь спасти брата, но теперь за ней охотится целая армия. Она хочет жить вдалеке от опасности, но ее манит новый город… и охотник, которому нет равных. Лекса обещает, что полюбит новую жизнь, но в нее врывается ураган. И зовут его мистер Блэк.","specs":["Постапокалипсис","672 стр.","Книга I","18+"],"format":null,"volume":{"pages":672,"basis":"print","isbn":"978-5-17-179711-9","widthMm":132,"heightMm":208,"depthMm":45,"source":"https://ast.ru/book/chernyy-belyy-893506/","depthKind":"publisher_dimensions"},"mockupThickness":0.216346},
   {"id":"grey-forest","coverRatio":0.631255,"name":"Серый лес","image":"assets/current/Для сайта/grey-forest.jpg","type":"book","series":"bw","worldName":"Черный Белый","catalog":true,"meta":"Постапокалипсис · Книга II","price":1090,"tag":"Продолжение","description":"Продолжение книги «Черный Белый». Надежды на спасение нет. Все, что осталось, это тягучая боль, пустота и жажда мести. Как пережить потерю близкого человека?! Как выжить, если бежать некуда?! Рано или поздно, они найдут меня. ОН найдет.","specs":["Постапокалипсис","416 стр.","Книга II","18+"],"source":"https://ast.ru/book/seryy-les-897308/","sourceLabel":"Об издании на сайте АСТ ↗","format":null,"volume":{"pages":416,"basis":"print","isbn":"978-5-17-189271-5","widthMm":133,"heightMm":207,"depthMm":27.6,"source":"https://ast.ru/book/seryy-les-897308/","depthKind":"publisher_dimensions"},"mockupThickness":0.133333},
   {"id":"silence-1","coverRatio":0.699062,"name":"Цвет тишины. Часть 1","image":"assets/current/Для сайта/silence-1.jpg","type":"book","series":"bw","worldName":"Черный Белый","catalog":true,"meta":"Постапокалипсис · Книга III","price":null,"tag":"Книга 3 из 4","description":"Третья книга. Часть 1.\n\nКогда я была на Арене, точно знала, что нужно делать. Там были свои законы, свои правила. Но бывают иные ловушки: без правил, без надежды… Они самые страшные. Особенно, когда они лишь в твоей голове. Куда идти, если света в конце туннеля нет?\n\nПродолжение трилогии «Черный Белый» и «Серый лес».\n\nВнимание!\n\nТолько для лиц старше 18 лет!\n\nТекст содержит натуралистичные описания наркотического опыта, который обусловлен исключительно сюжетом и является неотъемлемой частью художественного замысла. Автор категорически против употребления наркотических и психоактивных веществ и настоятельно рекомендует всем читателям вести здоровый и трезвый образ жизни.","specs":["Электронная книга","2020 год","460 стр.","18+"],"source":"https://www.litres.ru/book/ri-guva-19764391/cvet-tishiny-chast-1-63176117/","sourceLabel":"О книге на Литрес ↗","format":"Электронная книга","volume":{"pages":460,"basis":"ebook","source":"https://www.litres.ru/book/ri-guva-19764391/cvet-tishiny-chast-1-63176117/","depthKind":"visual_estimate","estimateNote":"Пропорция мокапа рассчитана ориентировочно по объёму электронной книги. Печатная пагинация и размеры не подтверждены."},"mockupThickness":0.145},
   {"id":"silence-2","coverRatio":0.699062,"name":"Цвет тишины. Часть 2","image":"assets/current/Для сайта/silence-2.jpg","type":"book","series":"bw","worldName":"Черный Белый","catalog":true,"meta":"Постапокалипсис · Книга IV","price":null,"tag":"Финал цикла","description":"Когда я была на Арене, точно знала, что нужно делать. Там были свои законы, свои правила. Но бывают иные ловушки: без правил, без надежды… Они самые страшные. Особенно, когда они лишь в твоей голове. Куда идти, если света в конце туннеля нет?\n\nПродолжение трилогии «Черный Белый» и «Серый лес».\n\nВ книге присутствует нецензурная брань!","specs":["Электронная книга","2020 год","490 стр.","18+"],"source":"https://www.litres.ru/book/ri-guva-19764391/cvet-tishiny-chast-2-63176118/","sourceLabel":"О книге на Литрес ↗","format":"Электронная книга","volume":{"pages":490,"basis":"ebook","source":"https://www.litres.ru/book/ri-guva-19764391/cvet-tishiny-chast-2-63176118/","depthKind":"visual_estimate","estimateNote":"Пропорция мокапа рассчитана ориентировочно по объёму электронной книги. Печатная пагинация и размеры не подтверждены."},"mockupThickness":0.153214},
@@ -1452,7 +1443,10 @@ $('#search-open').onclick=()=>{showDialog($('#search-dialog'));$('#search-input'
 function renderSearch(query){
   const q=query.toLocaleLowerCase('ru').trim();
   const matches=products.filter(p=>p.catalog!==false&&p.series===catalogWorld&&(p.name+' '+p.meta+' '+(p.worldName||'')).toLocaleLowerCase('ru').includes(q));
-  $('#search-results').innerHTML=matches.length?matches.map(p=>`<button class="search-result" data-product="${safe(p.id)}">${productThumb(p)}<span>${safe(p.name)}<small>${safe(p.meta)}</small></span><b class="search-format">${p.type==='book'?'Где купить':'Дроп'}</b></button>`).join(''):`<p class="search-empty">По запросу «${safe(query)}» ничего не найдено.<br>Попробуй другое название.</p>`;
+  $('#search-results').innerHTML=matches.length?matches.map(p=>{
+    const label=p.type==='merch'?'Дроп':window.RiBuyOptions?.get(p.id)?'Где купить':'О книге';
+    return `<button class="search-result" data-product="${safe(p.id)}">${productThumb(p)}<span>${safe(p.name)}<small>${safe(p.meta)}</small></span><b class="search-format">${label}</b></button>`;
+  }).join(''):`<p class="search-empty">По запросу «${safe(query)}» ничего не найдено.<br>Попробуй другое название.</p>`;
 }
 
 $('#search-input').addEventListener('input',e=>renderSearch(e.target.value));
