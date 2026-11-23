@@ -734,8 +734,6 @@
   const offers = Object.freeze(Object.fromEntries(Object.entries({
     shata:bookOffer('Шата'),
     sherka:bookOffer('Шерка'),
-    stickerpack:{ name:'Стикерпак «Черный Белый»', kind:'merch', price:null, state:'unavailable', statusText:'Не продаётся',
-      orderable:false, edition:'', releaseDate:null, releaseLabel:'', requestLabel:'' },
     bookmarks:stockOffer('Закладка «Черный Белый»'),
     'ribbed-candle':candleOffer('Ребристая свеча «Черный Белый»'),
     'book-candle':candleOffer('Свеча-книга «Черный Белый»'),
@@ -1108,10 +1106,10 @@
     return `<div class="commerce-offer-v97" data-offer-state="${escape(offer.state)}">${price}${status}${release}</div>`;
   }
   function purchaseAction(p){
-    const offer=commerceOffer(p);if(!offer||(!offer.orderable&&!offer.requestLabel))return '';
+    const offer=commerceOffer(p);if(!offer)return '';
     return offer.orderable
       ?`<button type="button" class="commerce-cart-v97" data-cart-add="${escape(p.id)}" aria-label="Добавить в корзину: ${escape(p.name)}">В корзину <span aria-hidden="true">↗</span></button>`
-      :`<button type="button" class="merch-drop-link commerce-notify-v97" data-drop-open="${escape(p.id)}">${escape(offer.requestLabel)} <span aria-hidden="true">↗</span></button>`;
+      :`<button type="button" class="merch-drop-link commerce-notify-v97" data-drop-open="${escape(p.id)}">${escape(offer.requestLabel||'Сообщить о дропе')} <span aria-hidden="true">↗</span></button>`;
   }
   function listFormats(p){
     const e=editions[p.id];if(p.type!=='book'||!e)return [];
@@ -1140,12 +1138,7 @@
   function render(p){
     if(p.type==='merch'){
       const offer=commerceOffer(p);
-      if(offer){
-        const summary=offerSummary(p);
-        const action=purchaseAction(p);
-        if(!action)return summary;
-        return `<section class="edition-choices merch-drop-choice commerce-detail-v97" data-release="${escape(offer.state)}" aria-label="Покупка и выпуск"><div class="edition-author">${summary}<div class="commerce-actions-v97">${action}</div><p class="merch-announcement-v91">Анонсы дропов будут в <a href="https://t.me/riguva" target="_blank" rel="noopener noreferrer">Telegram Ри <span aria-hidden="true">↗</span></a>.</p></div></section>`;
-      }
+      if(offer)return `<section class="edition-choices merch-drop-choice commerce-detail-v97" data-release="${escape(offer.state)}" aria-label="Покупка и выпуск"><div class="edition-author">${offerSummary(p)}<div class="commerce-actions-v97">${purchaseAction(p)}</div><p class="merch-announcement-v91">Анонсы дропов будут в <a href="https://t.me/riguva" target="_blank" rel="noopener noreferrer">Telegram Ри <span aria-hidden="true">↗</span></a>.</p></div></section>`;
       const drops=window.RiMerchDrops;
       const release=drops?.release(p)||{status:'upcoming',label:'Дропы автора',title:'Узнать о выпуске',description:'Дата выхода, состав выпуска и условия заказа появятся в анонсе дропа.',requestLabel:'Сообщить о дропе'};
       const price=drops?.priceNote(p)||(typeof p.price==='number'&&Number.isFinite(p.price)?`Ориентировочная цена: ${new Intl.NumberFormat('ru-RU').format(p.price)} ₽.`:'Цена при анонсе дропа.');
@@ -1188,7 +1181,7 @@
 
   function render(product, renderSurface) {
     const photos = product.gallery?.length ? product.gallery : [{src:product.image, alt:product.name}];
-    const hasOverview = ['stickerpack','bookmarks'].includes(product.id);
+    const hasOverview = product.id === 'bookmarks';
     const frames = hasOverview ? [{overview:true, alt:product.id==='bookmarks'?'Две стороны закладки':'Общий вид всего комплекта'}, ...photos] : photos;
     const previous = cards.get(product.id);
     const state = {product, frames, hasOverview, renderSurface, index:Math.min(previous?.index || 0, frames.length - 1)};
@@ -1308,7 +1301,6 @@ const products = [
   {"id":"shata","coverRatio":0.699062,"name":"Шата","image":"assets/current/Для сайта/shata.jpg","type":"book","series":"shatserak","worldName":"Шацерак","catalog":true,"meta":"Тёмное фэнтези · Книга I","price":1290,"tag":"Первая книга","description":"В моём мире существует сказка. Она гласит об ужасном боге Бадзун-Гра и его слугах, сотканных из тени. Этой сказкой пугают непослушных детишек, чтоб в лес по ночам не ходили... хотя и у взрослых мурашки от имени Бадзун-Гра.\n\nКто-то считает, что он лишь могущественный колдун; кто-то убежден, что он - вероломный бог; кто-то верит, что раньше Бадзун-Гра был человеком; другие же называют его отцом Мрака и злейшим существом на всем белом свете...\n\nА я - его дочь, и это вовсе не сказка.","specs":["Тёмное фэнтези","Книга I","18+"],"source":"https://www.litres.ru/book/ri-guva-19764391/shata-72267004/","sourceLabel":"О книге на Литрес ↗","format":null,"volume":{"pages":430,"basis":"ebook","source":"https://www.litres.ru/book/ri-guva-19764391/shata-72267004/","announcedPrintPages":600,"printAnnouncementSource":"https://t.me/riguva/1958","depthKind":"visual_estimate","estimateNote":"Автор анонсировала бумажную версию на 600 страниц. Пагинация позднего исправленного тиража и физические размеры не подтверждены."},"mockupThickness":0.183333},
   {"id":"sherka","coverRatio":0.67125,"name":"Шерка","image":"assets/author/Для сайта/sherka.jpg","type":"book","series":"shatserak","worldName":"Шацерак","catalog":true,"meta":"Тёмное фэнтези · Книга II","price":null,"tag":"Новая книга","description":"Баю-бай, мой дружок,\n\nНе ходи ночью за порог.\n\nТам, где темный лес шумит,\n\nБродят тени, как голодные псы.\n\nСпи, дитя, закрывай глаза,\n\nУспей уснуть, пока не взошла луна.\n\nЕсли будешь плакать, малыш,\n\nПридет Мрак и заберет твой детский крик.\n\nВторая книга серии «Шата»!","specs":["Электронная книга","2026 год","510 стр.","18+"],"source":"https://www.litres.ru/book/ri-guva-19764391/sherka-74661452/","sourceLabel":"О книге на Литрес ↗","format":"Электронная книга","volume":{"pages":510,"basis":"ebook","source":"https://www.litres.ru/book/ri-guva-19764391/sherka-74661452/","depthKind":"visual_estimate","estimateNote":"Бумажный выпуск подтверждён автором, число печатных страниц не найдено. Относительный объём визуализации примерно в 510/430 раза больше Шаты при условном одинаковом формате."},"mockupThickness":0.213899},
   {"id":"silence","coverRatio":0.699062,"name":"Цвет тишины. Сборник","image":"assets/current/Для сайта/silence.jpg","type":"book","series":"bw","worldName":"Черный Белый","catalog":false,"meta":"Постапокалипсис · Части I + II","price":1490,"tag":"Сборник","description":"Заключительная книга, из объединенных двух частей, трилогии «Черный Белый» и «Серый Лес».\n\nКогда я была на Арене, точно знала, что нужно делать. Там были свои законы, свои правила. Но бывают иные ловушки: без правил, без надежды… Они самые страшные. Особенно, когда они лишь в твоей голове. Куда идти, если света в конце туннеля нет?\n\nСодержит нецензурную брань.\n\nВнимание!\n\nТолько для лиц старше 18 лет!\n\nТекст содержит натуралистичные описания наркотического опыта, который обусловлен исключительно сюжетом и является неотъемлемой частью художественного замысла. Автор категорически против употребления наркотических и психоактивных веществ и настоятельно рекомендует всем читателям вести здоровый и трезвый образ жизни.","specs":["Постапокалипсис","Части I + II","18+"],"source":"https://www.litres.ru/book/ri-guva-19764391/cvet-tishiny-sbornik-51609572/","sourceLabel":"О книге на Литрес ↗","format":null,"volume":{"pages":940,"basis":"ebook","source":"https://www.litres.ru/book/ri-guva-19764391/cvet-tishiny-sbornik-51609572/","depthKind":"visual_estimate","estimateNote":"Скрытая в текущем каталоге объединённая электронная версия. Условная толщина для визуализации, не спецификация бумажного издания."},"mockupThickness":0.276429},
-  {"id":"stickerpack","name":"Стикерпак «Черный Белый»","image":"assets/author/v79-originals/01-alexia.jpg","photosPending":false,"useOverview":false,"type":"merch","series":"bw","worldName":"Черный Белый","meta":"Стикерпак","price":null,"packOnly":true,"tag":"Не продаётся","description":"Стикерпак с героями серии «Черный Белый». Рассмотри все изображения в галерее.","specs":["Мир «Черный Белый»","Полный комплект"],"gallery":[{"src":"assets/author/v79-originals/01-alexia.jpg","alt":"Дизайн: Алексия","surface":"stickers-alexia-v79"},{"src":"assets/author/v79-originals/02-black.jpg","alt":"Дизайн: Мистер Блэк","surface":"stickers-black-v79"},{"src":"assets/author/v79-originals/03-jack.jpg","alt":"Дизайн: Джек","surface":"stickers-jack-v79"},{"src":"assets/author/v79-originals/04-troy.jpg","alt":"Дизайн: Трой","surface":"stickers-troy-v79"},{"src":"assets/author/v79-originals/05-dayton.jpg","alt":"Дизайн: Дэйтон","surface":"stickers-dayton-v79"},{"src":"assets/author/v79-originals/06-pierce.jpg","alt":"Дизайн: Пирс","surface":"stickers-pierce-v79"},{"src":"assets/author/v79-originals/07-theo-naita.jpg","alt":"Дизайн: Тео и Наита","surface":"stickers-theo-naita-v79"},{"src":"assets/author/Для сайта/stickers-02.jpg","alt":"Дизайн: Рич","surface":"stickers-02"},{"src":"assets/author/Для сайта/stickers-03.jpg","alt":"Дизайн: Джейс","surface":"stickers-03"}],"mockup":true},
   {"id":"bookmarks","name":"Закладка «Черный Белый»","image":"assets/author/Для сайта/bookmarks.jpg","photosPending":false,"type":"merch","series":"bw","worldName":"Черный Белый","meta":"Двусторонняя закладка","price":1000,"provisionalPrice":true,"tag":"Двусторонняя","description":"Двусторонняя закладка с героями серии «Черный Белый».","specs":["Мир «Черный Белый»","Двусторонняя","1 закладка"],"mockup":true,"gallery":[{"src":"assets/author/Для сайта/bookmarks.jpg","surface":"bookmark-front","alt":"Закладка: сторона 1"},{"src":"assets/author/Для сайта/bookmarks.jpg","surface":"bookmark-back","alt":"Закладка: сторона 2"}]},
   {"id":"cerberus-figurine","name":"Фигурка «Цербер»","image":"assets/merch-v90/Для сайта/cerberus-front.webp","photosPending":false,"photoLabel":"Цербер","type":"merch","series":"bw","worldName":"Черный Белый","merchGroup":"objects","meta":"Фигурка · Мир «Черный Белый»","price":null,"dropOnly":true,"release":{"status":"upcoming"},"tag":"Следующий дроп","description":"Фигурка Цербера из мира «Черный Белый»: три головы, рельефный узор на груди и манжеты на передних лапах. Рельефное основание расположено на гладкой круглой подставке.","specs":["Мир «Черный Белый»","Фигурка","Следующий дроп"],"gallery":[{"src":"assets/merch-v90/Для сайта/cerberus-front.webp","alt":"Фигурка «Цербер»: вид спереди"},{"src":"assets/merch-v90/Для сайта/cerberus-side.webp","alt":"Фигурка «Цербер»: вид сбоку"}]},
   {"id":"ribbed-candle","name":"Ребристая свеча «Черный Белый»","image":"assets/merch-v89/Для сайта/ribbed-candle.webp","photosPending":false,"type":"merch","series":"bw","worldName":"Черный Белый","merchGroup":"objects","meta":"Цилиндрическая свеча","price":null,"dropOnly":true,"release":{"status":"upcoming"},"tag":"Следующий дроп","description":"Чёрно-белая цилиндрическая свеча с ребристой поверхностью и изображением пары сверху.","specs":["Мир «Черный Белый»","Чёрно-белая","Ребристая поверхность"],"gallery":[{"src":"assets/merch-v89/Для сайта/ribbed-candle.webp","alt":"Ребристая свеча «Черный Белый»: вид с изображением пары сверху"}]},
@@ -1328,7 +1320,7 @@ const bookMockup = (p,lazy=true) => {
 };
 window.bookMockup=bookMockup;
 const photoPlaceholder = (p,compact=false) => {
-  const label=p.photoLabel||(p.packOnly?'Стикерпак':p.id==='bookmarks'?'Закладка':p.name);
+  const label=p.photoLabel||(p.id==='bookmarks'?'Закладка':p.name);
   return compact?`<span class="product-thumb-placeholder" role="img" aria-label="Фото пока не добавлено">${safe(label)}</span>`:`<span class="photo-placeholder"><span class="photo-placeholder-title">${safe(label)}</span><span class="photo-placeholder-note">Фото пока не добавлено</span></span>`;
 };
 const hasDesignMockup = p => !!(p.mockup&&window.RiMerchMockups);
@@ -1491,10 +1483,7 @@ $$('#menu-dialog nav a').forEach(a=>a.onclick=()=>$('#menu-dialog').close());
   const merchScope=window.RiMerchDrops?.scope||{id:'all-merch-drops',name:'Все будущие дропы мерча'};
   const isAllMerch=id=>id===merchScope.id;
   const hasMerchScope=()=>document.body.dataset.world==='bw';
-  const waitingForRelease=item=>{
-    const offer=window.RiCommerce?.offer(item.id);
-    return item.type==='merch'&&(!offer||(!offer.orderable&&!!offer.requestLabel));
-  };
+  const waitingForRelease=item=>item.type==='merch'&&!window.RiCommerce?.offer(item.id)?.orderable;
   const requestTarget=id=>isAllMerch(id)?(hasMerchScope()?merchScope:null):items().find(item=>item.id===id&&waitingForRelease(item));
   const selectedId=()=>fixedProduct?.id||productSelect.value;
   const contactHint=()=>currentType()==='email'?
